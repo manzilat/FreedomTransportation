@@ -9,12 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FreedomTransportation.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FreedomTransportation.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -155,8 +157,33 @@ namespace FreedomTransportation.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    if (model.accountType == "Customer")
+                    {
+                        var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                        var roleManager = new RoleManager<IdentityRole>(rolestore);
+                        await roleManager.CreateAsync(new IdentityRole(Roles.Customer));
+                        await UserManager.AddToRoleAsync(user.Id, Roles.Customer);
+                        CreateCustomer(model);
+                        var newCust = db.Customers.Where(x => x.Email == model.Email).FirstOrDefault();
+                       
+                        await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                        return RedirectToAction("Index", "Customers");
+                    }
+                    else if (model.accountType == "Driver")
+                    {
+                        var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                        var roleManager = new RoleManager<IdentityRole>(rolestore);
+                        await roleManager.CreateAsync(new IdentityRole(Roles.Driver));
+                        await UserManager.AddToRoleAsync(user.Id, Roles.Driver);
+                        CreateDriver(model);
+                        var newDriver = db.Drivers.Where(x => x.Email == model.Email).FirstOrDefault();
+                       
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+
+                        return RedirectToAction("Index", "Driver");
+                    }
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -171,6 +198,38 @@ namespace FreedomTransportation.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+            public void CreateDriver(RegisterViewModel model)
+            {
+                Driver driver = new Driver();
+                driver.FirstName = model.firstName;
+            driver.LastName = model.lastName;
+            driver.Phone = model.phone;
+            driver.Street = model.street;
+            driver.State = model.state;
+            driver.City = model.city;
+            driver.Zip = model.zip;
+            driver.Email = model.Email;
+                db.Drivers.Add(driver);
+                db.SaveChanges();
+            }
+
+          
+
+            public void CreateCustomer(RegisterViewModel model)
+            {
+
+                Customer customer = new Customer();
+            customer.FirstName = model.firstName;
+            customer.LastName = model.lastName;
+            customer.Phone = model.phone;
+            customer.Street = model.street;
+            customer.City = model.city;
+            customer.State = model.state;
+            customer.Zip = model.zip;
+            customer.Email = model.Email;
+                db.Customers.Add(customer);
+                db.SaveChanges();
+            }
 
         //
         // GET: /Account/ConfirmEmail

@@ -65,9 +65,32 @@ namespace FreedomTransportation.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        public string firstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastName { get; set; }
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone Number")]
+        public string phone { get; set; }
+        [Required]
+        [Display(Name = "Street")]
+        public string street { get; set; }
+        [Required]
+        [Display(Name = "State")]
+        public string state { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public string city { get; set; }
+        [Required]
+        [Display(Name = "Zip")]
+        public string zip { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        public string accountType { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
