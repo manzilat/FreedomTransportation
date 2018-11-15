@@ -8,8 +8,8 @@ namespace FreedomTransportation.Models
 {
     public class SchedulingRide
     {
-        public int SchedulingId { get; set; }
-
+        [Key]
+        public int Id { get; set; }
         [Display(Name = "Pickup From")]
         public string PickupAddress { get; set; }
         [Display(Name = "Pickup City")]

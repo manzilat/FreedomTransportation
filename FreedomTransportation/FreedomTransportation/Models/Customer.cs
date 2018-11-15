@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,7 @@ namespace FreedomTransportation.Models
     public class Customer
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -21,13 +22,11 @@ namespace FreedomTransportation.Models
 
         public string lat { get; set; }
         public string lng { get; set; }
+        [ForeignKey("CustomerWallet")]
+        public int CustomerId { get; set; }
+        public CustomerWallet CustomerWallet { get; set; }
+        [ForeignKey("SchedulingRide")]
+        public int SchedulingRideId { get; set; }
+        public SchedulingRide SchedulingRide { get; set; }
     }
 }
-//[Display(Name = "Name on the card")]
-//public string NameOnTheCard { get; set; }
-//[Display(Name = "Credit card Number")]
-//public string CreditCard { get; set; }
-//[Display(Name = "Expiration Date")]
-//public string ExpirationDate { get; set; }
-//[Display(Name = "CVV Number")]
-//public string CvvNumber { get; set; }

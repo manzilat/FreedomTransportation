@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -19,5 +20,10 @@ namespace FreedomTransportation.Models
         public string City { get; set; }
         public string lat { get; set; }
         public string lng { get; set; }
+        [ForeignKey("Driver")]
+        public int DriverId { get; set; }
+        public Driver Driver { get; set; }
+
+
     }
 }

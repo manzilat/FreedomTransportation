@@ -7,13 +7,13 @@ namespace FreedomTransportation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addfewmoremodels : IMigrationMetadata
+    public sealed partial class madechangesinmodels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addfewmoremodels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(madechangesinmodels));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811141958583_addfew more models"; }
+            get { return "201811142204438_made changes in models"; }
         }
         
         string IMigrationMetadata.Source

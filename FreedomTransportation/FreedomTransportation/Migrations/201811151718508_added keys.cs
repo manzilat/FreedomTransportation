@@ -3,7 +3,7 @@ namespace FreedomTransportation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedpropertiestothemodel : DbMigration
+    public partial class addedkeys : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace FreedomTransportation.Migrations
                 "dbo.Customers",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(),
                         LastName = c.String(),
                         Email = c.String(),
@@ -22,26 +22,84 @@ namespace FreedomTransportation.Migrations
                         City = c.String(),
                         lat = c.String(),
                         lng = c.String(),
+                        CustomerId = c.Int(nullable: false),
+                        SchedulingRideId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CustomerWallets", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.SchedulingRides", t => t.SchedulingRideId, cascadeDelete: true)
+                .Index(t => t.CustomerId)
+                .Index(t => t.SchedulingRideId);
+            
+            CreateTable(
+                "dbo.CustomerWallets",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Amount = c.Double(nullable: false),
+                        NameOnTheCard = c.String(),
+                        CreditCard = c.String(),
+                        ExpirationDate = c.String(),
+                        CvvNumber = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.SchedulingRides",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        PickupAddress = c.String(),
+                        PickupCity = c.String(),
+                        PickupState = c.String(),
+                        PickupZipCode = c.String(),
+                        DropoffAddress = c.String(),
+                        DropoffCity = c.Int(nullable: false),
+                        DropoffState = c.String(),
+                        DropoffZipCode = c.String(),
+                        lat = c.String(),
+                        lng = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Drivers",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(),
                         LastName = c.String(),
+                        DriversLicense = c.String(),
                         Email = c.String(),
                         Phone = c.String(),
                         Street = c.String(),
                         State = c.String(),
                         Zip = c.String(),
                         City = c.String(),
+                        Status = c.String(),
+                        DriverRating = c.String(),
                         lat = c.String(),
                         lng = c.String(),
+                        CustomerId = c.Int(nullable: false),
+                        TripsId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Trips", t => t.TripsId, cascadeDelete: true)
+                .Index(t => t.CustomerId)
+                .Index(t => t.TripsId);
+            
+            CreateTable(
+                "dbo.Trips",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        PickUpTime = c.DateTime(nullable: false),
+                        ArrivalTime = c.DateTime(nullable: false),
+                        DepartureTime = c.DateTime(nullable: false),
+                        DropOffTime = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -80,8 +138,11 @@ namespace FreedomTransportation.Migrations
                         City = c.String(),
                         lat = c.String(),
                         lng = c.String(),
+                        DriverId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Drivers", t => t.DriverId, cascadeDelete: true)
+                .Index(t => t.DriverId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -143,20 +204,33 @@ namespace FreedomTransportation.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.TransportationProviders", "DriverId", "dbo.Drivers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Drivers", "TripsId", "dbo.Trips");
+            DropForeignKey("dbo.Drivers", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.Customers", "SchedulingRideId", "dbo.SchedulingRides");
+            DropForeignKey("dbo.Customers", "CustomerId", "dbo.CustomerWallets");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.TransportationProviders", new[] { "DriverId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Drivers", new[] { "TripsId" });
+            DropIndex("dbo.Drivers", new[] { "CustomerId" });
+            DropIndex("dbo.Customers", new[] { "SchedulingRideId" });
+            DropIndex("dbo.Customers", new[] { "CustomerId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.TransportationProviders");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Trips");
             DropTable("dbo.Drivers");
+            DropTable("dbo.SchedulingRides");
+            DropTable("dbo.CustomerWallets");
             DropTable("dbo.Customers");
         }
     }

@@ -7,13 +7,13 @@ namespace FreedomTransportation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedpropertiestothemodel : IMigrationMetadata
+    public sealed partial class addedkeys : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedpropertiestothemodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedkeys));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811141449572_added properties to the model"; }
+            get { return "201811151718508_added keys"; }
         }
         
         string IMigrationMetadata.Source
