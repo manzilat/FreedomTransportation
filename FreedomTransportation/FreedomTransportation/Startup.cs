@@ -13,62 +13,32 @@ namespace FreedomTransportation
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            createRolesandUsers();
+            CreateRolls();
+
         }
-        // In this method we will create default User roles and Admin user for login   
-        private void createRolesandUsers()
+        private void CreateRolls()
         {
             ApplicationDbContext context = new ApplicationDbContext();
-
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
-
-            // In Startup iam creating first Admin Role and creating a default Admin User    
-            if (!roleManager.RoleExists("Admin"))
+            if (!roleManager.RoleExists("Customer"))
             {
-
-                // first we create Admin rool   
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Admin";
+                role.Name = "Customer";
                 roleManager.Create(role);
-
-                //Here we create a Admin super user who will maintain the website                  
-
-                var user = new ApplicationUser();
-                user.UserName = "irfana";
-                user.Email = "amtuln55@gmail.com";
-
-                string userPWD = "1234!";
-
-                var chkUser = UserManager.Create(user, userPWD);
-
-                //Add default User to Role Admin   
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
-
-                }
             }
-
-            // creating Creating Manager role    
-            if (!roleManager.RoleExists("Manager"))
+            if (!roleManager.RoleExists("Driver"))
             {
-                var role = new IdentityRole();
-                role.Name = "Manager";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Driver";
                 roleManager.Create(role);
-
             }
-
-            // creating Creating Employee role    
-            if (!roleManager.RoleExists("Employee"))
+            if (!roleManager.RoleExists("TransportationProvider"))
             {
-                var role = new IdentityRole();
-                role.Name = "Employee";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "TransportationProvider";
                 roleManager.Create(role);
-
             }
         }
-
     }
 }
+
