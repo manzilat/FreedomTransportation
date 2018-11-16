@@ -7,13 +7,13 @@ namespace FreedomTransportation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedkeys : IMigrationMetadata
+    public sealed partial class removedrequiredfromidentitymodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedkeys));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removedrequiredfromidentitymodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811151718508_added keys"; }
+            get { return "201811161557594_removed required from identity model"; }
         }
         
         string IMigrationMetadata.Source

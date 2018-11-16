@@ -10,25 +10,25 @@ namespace FreedomTransportation.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        [Required]
+      
         [Display(Name = "First Name")]
         public string firstName { get; set; }
-        [Required]
+    
         [Display(Name = "Last Name")]
         public string lastName { get; set; }
-        [Required]
+
         [Display(Name = "Phone Number")]
         public string phone { get; set; }
-        [Required]
+   
         [Display(Name = "Street")]
         public string street { get; set; }
-        [Required]
+       
         [Display(Name = "City")]
         public string city { get; set; }
-        [Required]
+
         [Display(Name = "State")]
         public string state { get; set; }
-        [Required]
+      
         [Display(Name = "Zip")]
         public string zip { get; set; }
 
