@@ -10,29 +10,8 @@ namespace FreedomTransportation.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-      
-        [Display(Name = "First Name")]
-        public string firstName { get; set; }
-    
-        [Display(Name = "Last Name")]
-        public string lastName { get; set; }
 
-        [Display(Name = "Phone Number")]
-        public string phone { get; set; }
-   
-        [Display(Name = "Street")]
-        public string street { get; set; }
-       
-        [Display(Name = "City")]
-        public string city { get; set; }
-
-        [Display(Name = "State")]
-        public string state { get; set; }
-      
-        [Display(Name = "Zip")]
-        public string zip { get; set; }
-
-        public string accountType { get; set; }
+        public string UserRole { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

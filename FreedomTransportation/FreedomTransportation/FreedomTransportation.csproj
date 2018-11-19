@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201811161557594_removed required from identity model.Designer.cs">
       <DependentUpon>201811161557594_removed required from identity model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811162016222_removes properties from identityuser.cs" />
+    <Compile Include="Migrations\201811162016222_removes properties from identityuser.Designer.cs">
+      <DependentUpon>201811162016222_removes properties from identityuser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -278,7 +282,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customer.cshtml" />
+    <Content Include="Views\Customers\Customers.cshtml" />
+    <Content Include="Views\Customers\Home.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +305,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811161557594_removed required from identity model.resx">
       <DependentUpon>201811161557594_removed required from identity model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811162016222_removes properties from identityuser.resx">
+      <DependentUpon>201811162016222_removes properties from identityuser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
