@@ -14,10 +14,16 @@ namespace FreedomTransportation.Controllers
     public class CustomersController : Controller
     {
         public ApplicationDbContext db = new ApplicationDbContext();
-        public Customer GetCustomer()
+           public ActionResult Index()
         {
-            var customer = db.Customers.Where(x => x.Email == HttpContext.User.Identity.Name).FirstOrDefault();
-            return customer;
+            return View(db.Customers.ToList());
+        }
+
+        public ActionResult Home()
+        {
+            var userId = User.Identity.GetUserId();
+            var customer = (from c in db.Customers where c.Id.ToString() == userId select c).FirstOrDefault();
+            return View(customer);
         }
 
         // GET: Customers/Create
@@ -27,7 +33,7 @@ namespace FreedomTransportation.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Phone,Street,State,Zip,City,lat,lng")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Phone,Street,State,Zip,City,lat,lng,CustomerWalleteId,SchedulingRide")] Customer customer)
         {
             if (ModelState.IsValid)
             {

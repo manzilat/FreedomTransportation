@@ -23,10 +23,10 @@ namespace FreedomTransportation.Models
         public string lat { get; set; }
         public string lng { get; set; }
         [ForeignKey("CustomerWallet")]
-        public int CustomerWalletId { get; set; }
+        public int? CustomerWalletId { get; set; }
         public CustomerWallet CustomerWallet { get; set; }
         [ForeignKey("SchedulingRide")]
-        public int SchedulingRideId { get; set; }
+        public int? SchedulingRideId { get; set; }
         public SchedulingRide SchedulingRide { get; set; }
     }
 }

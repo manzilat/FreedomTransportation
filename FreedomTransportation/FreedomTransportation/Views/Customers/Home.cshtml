@@ -104,9 +104,8 @@
     <input type="button" class="btn btn-success" value="Schedule A Ride" onclick="location.href='@Url.Action("PickUpAddress", "Customers")'" />&nbsp;
 
 
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })&nbsp; ) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-success" })&nbsp; ) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit My Info", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })&nbsp;
+    @Html.ActionLink("Delete My Account", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })&nbsp;*@
 </p>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

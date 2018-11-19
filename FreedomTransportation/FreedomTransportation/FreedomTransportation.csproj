@@ -209,6 +209,14 @@
     <Compile Include="Migrations\201811162016222_removes properties from identityuser.Designer.cs">
       <DependentUpon>201811162016222_removes properties from identityuser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811191809408_replaced customer id into customerwalletid.cs" />
+    <Compile Include="Migrations\201811191809408_replaced customer id into customerwalletid.Designer.cs">
+      <DependentUpon>201811191809408_replaced customer id into customerwalletid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811191854433_wallet id and rides are now nullable.cs" />
+    <Compile Include="Migrations\201811191854433_wallet id and rides are now nullable.Designer.cs">
+      <DependentUpon>201811191854433_wallet id and rides are now nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -308,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811162016222_removes properties from identityuser.resx">
       <DependentUpon>201811162016222_removes properties from identityuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191809408_replaced customer id into customerwalletid.resx">
+      <DependentUpon>201811191809408_replaced customer id into customerwalletid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191854433_wallet id and rides are now nullable.resx">
+      <DependentUpon>201811191854433_wallet id and rides are now nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
