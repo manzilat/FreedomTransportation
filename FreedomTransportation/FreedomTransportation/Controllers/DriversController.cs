@@ -12,7 +12,21 @@ namespace FreedomTransportation.Controllers
 {
     public class DriversController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        public ApplicationDbContext db = new ApplicationDbContext();
+        //public ActionResult DriverTodayPickups()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var currentDriver = (from d in db.Drivers where d.Id.ToString() == userId select d).FirstOrDefault();
+           
+        //    var todayDate = DateTime.Now.Date;
+        //    var customersMatchingZip = (from c in db.Customers where c.Zip == currentDriver.Zip select c).ToList();
+
+        //    if (!customersMatchingZip.Any())
+        //    {
+        //        return View();
+        //    }
+        //    return View(customersMatchingZip);
+        //}
         // GET: Drivers
         public ActionResult Index()
         {
@@ -20,17 +34,10 @@ namespace FreedomTransportation.Controllers
         }
 
         // GET: Drivers/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Driver driver = db.Drivers.Find(id);
-            if (driver == null)
-            {
-                return HttpNotFound();
-            }
+          Driver driver = db.Drivers.Find(id);
+           
             return View(driver);
         }
 
@@ -48,31 +55,31 @@ namespace FreedomTransportation.Controllers
             if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
-                var currentUser = (from u in db.Users where u.Id == userId select u).First();
+
+                var currentUser = (from u in db.Users where u.Id == userId select u).FirstOrDefault();
                 driver.DriversLicense = currentUser.Id ;
                 driver.Email = currentUser.Email;
-                driver.Password = currentUser.PasswordHash;
+     
 
                 db.Drivers.Add(driver);
                 db.SaveChanges();
-                return RedirectToAction("DriverTodayPickups");
+                return RedirectToAction("Index");
             }
-
+            //else
+            //{
+            //    var errors = ModelState.Select(x => x.Value.Errors)
+            //                           .Where(y => y.Count > 0)
+            //                           .ToList();
+            //}
             return View(driver);
         }
 
         // GET: Drivers/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+           
             Driver driver = db.Drivers.Find(id);
-            if (driver == null)
-            {
-                return HttpNotFound();
-            }
+            
             return View(driver);
         }
 
@@ -86,23 +93,17 @@ namespace FreedomTransportation.Controllers
             {
                 db.Entry(driver).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("DriverTodayPickups");
+                return RedirectToAction("Index");
             }
             return View(driver);
         }
 
         // GET: Employees/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+          
             Driver driver = db.Drivers.Find(id);
-            if (driver == null)
-            {
-                return HttpNotFound();
-            }
+          
             return View(driver);
         }
 
@@ -114,7 +115,7 @@ namespace FreedomTransportation.Controllers
             Driver driver = db.Drivers.Find(id);
             db.Drivers.Remove(driver);
             db.SaveChanges();
-            return RedirectToAction("DriverTodayPickups");
+            return RedirectToAction("Index");
         }
     }
 }

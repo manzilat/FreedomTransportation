@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201811201458448_added a foreign key to provider,customer and driver.Designer.cs">
       <DependentUpon>201811201458448_added a foreign key to provider,customer and driver.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811201623156_removed some properties from drivermodel.cs" />
+    <Compile Include="Migrations\201811201623156_removed some properties from drivermodel.Designer.cs">
+      <DependentUpon>201811201623156_removed some properties from drivermodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -347,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811201458448_added a foreign key to provider,customer and driver.resx">
       <DependentUpon>201811201458448_added a foreign key to provider,customer and driver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811201623156_removed some properties from drivermodel.resx">
+      <DependentUpon>201811201623156_removed some properties from drivermodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

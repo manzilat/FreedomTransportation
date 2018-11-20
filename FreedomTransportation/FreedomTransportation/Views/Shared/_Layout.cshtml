@@ -29,7 +29,7 @@
                         <li>@Html.ActionLink("Schedule You're Ride", "Schedule You're Ride", "Home")</li>
 
                     }
-                    @if (User.IsInRole("Drivers"))
+                    @if (User.IsInRole("Driver"))
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
 

@@ -98,47 +98,9 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DriverRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DriverRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.lat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.lng)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lng)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TripsId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TripsId)
-        </dd>
-
     </dl>
+    @Html.HiddenFor(model => model.TripsId)
+    @Html.HiddenFor(model => model.CustomerId)
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

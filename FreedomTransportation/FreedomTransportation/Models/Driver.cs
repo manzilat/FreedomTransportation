@@ -24,15 +24,14 @@ namespace FreedomTransportation.Models
         public string City { get; set; }
         public string Status { get; set; }
         [Display(Name = "Driver's Rating")]
-        public string DriverRating { get; set; }
+       
 
-        public string lat { get; set; }
-        public string lng { get; set; }
+       
         [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
         [ForeignKey("Trips")]
-        public int TripsId { get; set; }
+        public int? TripsId { get; set; }
         public Trips Trips { get; set; }
     }
 }

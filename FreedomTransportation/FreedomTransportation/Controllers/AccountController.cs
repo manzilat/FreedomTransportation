@@ -166,7 +166,7 @@ namespace FreedomTransportation.Controllers
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
                     if (model.UserRole == "Driver")
                     {
-                        return RedirectToAction("Create", "Driver");
+                        return RedirectToAction("Create", "Drivers");
                     }
                     else if (model.UserRole == "Customer")
                     {
