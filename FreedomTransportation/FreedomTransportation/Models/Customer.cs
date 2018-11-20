@@ -28,5 +28,10 @@ namespace FreedomTransportation.Models
         [ForeignKey("SchedulingRide")]
         public int? SchedulingRideId { get; set; }
         public SchedulingRide SchedulingRide { get; set; }
+        // do migration!
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
     }
 }

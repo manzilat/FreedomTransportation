@@ -21,7 +21,8 @@ namespace FreedomTransportation.Controllers
         public ActionResult Home()
         {
             var userId = User.Identity.GetUserId();
-            var customer = (from c in db.Customers where c.Id.ToString() == userId select c).FirstOrDefault();
+            var customer = (from c in db.Customers where c.ApplicationUserId == userId select c).FirstOrDefault();
+
             return View(customer);
         }
 
@@ -36,6 +37,9 @@ namespace FreedomTransportation.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
+                customer.ApplicationUserId = userId;
+
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Home");

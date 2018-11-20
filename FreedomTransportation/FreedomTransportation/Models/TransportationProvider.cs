@@ -23,6 +23,9 @@ namespace FreedomTransportation.Models
         [ForeignKey("Driver")]
         public int DriverId { get; set; }
         public Driver Driver { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
 
     }
