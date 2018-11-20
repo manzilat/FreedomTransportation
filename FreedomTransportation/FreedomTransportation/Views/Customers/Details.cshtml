@@ -1,19 +1,15 @@
 ﻿@model FreedomTransportation.Models.Customer
 
 @{
-ViewBag.Title = "Home";
+    ViewBag.Title = "Details";
 }
-@{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<h2>Home</h2>
+
+<h2>Details</h2>
 
 <div>
     <h4>Customer</h4>
     <hr />
     <dl class="dl-horizontal">
-        @Html.HiddenFor(model => model.Id)
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -77,20 +73,42 @@ ViewBag.Title = "Home";
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
-        @Html.HiddenFor(model => model.lat)
-        @Html.HiddenFor(model => model.lng)
-        @Html.HiddenFor(model => model.SchedulingRideId)
 
+        <dt>
+            @Html.DisplayNameFor(model => model.lat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerWalletId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerWalletId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchedulingRideId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchedulingRideId)
+        </dd>
 
     </dl>
 </div>
 <p>
-    <input type="button" class="btn btn-success" value="Schedule A Ride" onclick="location.href='@Url.Action("PickUpAddress", "Customers")'" />&nbsp;
-
-
-    @*@Html.ActionLink("Edit My Info", "Edit", new { id = Model.Id}, new { @class = "btn btn-success" })&nbsp;*@
-    @*@Html.ActionLink("Delete My Account", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })&nbsp;*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
