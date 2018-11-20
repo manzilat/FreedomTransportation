@@ -230,6 +230,14 @@
     <Compile Include="Migrations\201811201623156_removed some properties from drivermodel.Designer.cs">
       <DependentUpon>201811201623156_removed some properties from drivermodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811202050354_test.cs" />
+    <Compile Include="Migrations\201811202050354_test.Designer.cs">
+      <DependentUpon>201811202050354_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811202056083_changed the data type of city in schedulingride model.cs" />
+    <Compile Include="Migrations\201811202056083_changed the data type of city in schedulingride model.Designer.cs">
+      <DependentUpon>201811202056083_changed the data type of city in schedulingride model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -316,6 +324,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Drivers\Delete.cshtml" />
     <Content Include="Views\Drivers\DriverTodayPickups.cshtml" />
+    <Content Include="Views\Customers\SchedulingRide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -354,6 +363,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811201623156_removed some properties from drivermodel.resx">
       <DependentUpon>201811201623156_removed some properties from drivermodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811202050354_test.resx">
+      <DependentUpon>201811202050354_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811202056083_changed the data type of city in schedulingride model.resx">
+      <DependentUpon>201811202056083_changed the data type of city in schedulingride model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

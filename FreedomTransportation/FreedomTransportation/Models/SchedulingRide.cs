@@ -21,13 +21,12 @@ namespace FreedomTransportation.Models
         [Display(Name = "DropOff To")]
         public string DropoffAddress { get; set; }
         [Display(Name = "DropOff City")]
-        public int DropoffCity { get; set; }
+        public string DropoffCity { get; set; }
         [Display(Name = "DropOff State")]
         public string DropoffState { get; set; }
         [Display(Name = "DropOff Zipode")]
         public string DropoffZipCode { get; set; }
-        public string lat { get; set; }
-        public string lng { get; set; }
+        
 
 
     }

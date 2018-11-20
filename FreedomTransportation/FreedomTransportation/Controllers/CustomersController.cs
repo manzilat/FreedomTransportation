@@ -49,31 +49,19 @@ namespace FreedomTransportation.Controllers
             return View(customer);
         }
         // GET: Customers/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
             Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+            
             return View(customer);
         }
         // GET: Customers/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
             Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+            
             return View(customer);
         }
         // POST: Customers/Edit/5
@@ -81,7 +69,7 @@ namespace FreedomTransportation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Phone,Street,State,City,Zip")] Customer customer, string id)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Phone,Street,State,City,Zip")] Customer customer, int id)
         {
 
             if (ModelState.IsValid)
@@ -106,24 +94,17 @@ namespace FreedomTransportation.Controllers
             return View(customer);
         }
         // GET: Customers/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+           
             return View(customer);
         }
 
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Customer customer = db.Customers.Find(id);
             customer.FirstName = "Deleted";
@@ -132,6 +113,33 @@ namespace FreedomTransportation.Controllers
 
             return RedirectToAction("LogOff", "Account");
         }
+
+
+
+        public ActionResult SchedulingRide()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SchedulingRide([Bind(Include = "OneTimePickupDate")] Customer customer)
+        {
+            var userId = User.Identity.GetUserId();
+            var identityToInt = userId;
+            var currentCustomer = (from c in db.Customers where userId == c.ApplicationUserId select c).First();
+            currentCustomer.SchedulingRide = customer.SchedulingRide;
+
+            db.Entry(currentCustomer).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Home");
+        }
+
+
+
+
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
