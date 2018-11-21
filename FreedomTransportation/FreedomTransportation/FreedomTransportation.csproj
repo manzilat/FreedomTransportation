@@ -199,6 +199,7 @@
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SchedulingRidesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,14 @@
     <Compile Include="Migrations\201811202056083_changed the data type of city in schedulingride model.cs" />
     <Compile Include="Migrations\201811202056083_changed the data type of city in schedulingride model.Designer.cs">
       <DependentUpon>201811202056083_changed the data type of city in schedulingride model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811211557206_Nevin Testing.cs" />
+    <Compile Include="Migrations\201811211557206_Nevin Testing.Designer.cs">
+      <DependentUpon>201811211557206_Nevin Testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811211705178_added a foreign key to scheduling ride.cs" />
+    <Compile Include="Migrations\201811211705178_added a foreign key to scheduling ride.Designer.cs">
+      <DependentUpon>201811211705178_added a foreign key to scheduling ride.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -324,7 +333,8 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Drivers\Delete.cshtml" />
     <Content Include="Views\Drivers\DriverTodayPickups.cshtml" />
-    <Content Include="Views\Customers\SchedulingRide.cshtml" />
+    <Content Include="Views\SchedulingRides\SchedulingRide.cshtml" />
+    <Content Include="Views\SchedulingRides\TripInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,6 +379,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811202056083_changed the data type of city in schedulingride model.resx">
       <DependentUpon>201811202056083_changed the data type of city in schedulingride model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211557206_Nevin Testing.resx">
+      <DependentUpon>201811211557206_Nevin Testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211705178_added a foreign key to scheduling ride.resx">
+      <DependentUpon>201811211705178_added a foreign key to scheduling ride.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,87 @@
+﻿@model FreedomTransportation.Models.SchedulingRide
+
+@{
+    ViewBag.Title = "TripInfo";
+}
+
+<h2>TripInfo</h2>
+
+<div>
+    <h4>SchedulingRide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffZipCode)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Pay Now" class="btn btn-success" />
+    </div>
+</div>

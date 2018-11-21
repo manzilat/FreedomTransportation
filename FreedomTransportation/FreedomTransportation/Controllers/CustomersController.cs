@@ -116,30 +116,9 @@ namespace FreedomTransportation.Controllers
 
 
 
-        public ActionResult SchedulingRide()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SchedulingRide([Bind(Include = "OneTimePickupDate")] Customer customer)
-        {
-            var userId = User.Identity.GetUserId();
-            var identityToInt = userId;
-            var currentCustomer = (from c in db.Customers where userId == c.ApplicationUserId select c).First();
-            currentCustomer.SchedulingRide = customer.SchedulingRide;
-
-            db.Entry(currentCustomer).State = EntityState.Modified;
-            db.SaveChanges();
-
-            return RedirectToAction("Home");
-        }
+       
 
 
-
-
-        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

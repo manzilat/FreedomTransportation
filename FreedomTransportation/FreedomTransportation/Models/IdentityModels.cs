@@ -34,6 +34,9 @@ namespace FreedomTransportation.Models
         }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Driver> Drivers { get; set; }
+        public DbSet<CustomerWallet> CustomerWallets { get; set; }
+        public DbSet<SchedulingRide> SchedulingRides { get; set; }
+        public DbSet<Trips> Trips { get; set; }
         public DbSet<TransportationProvider> TransportationProviders { get; set; }
     }
 }

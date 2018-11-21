@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -26,7 +27,10 @@ namespace FreedomTransportation.Models
         public string DropoffState { get; set; }
         [Display(Name = "DropOff Zipode")]
         public string DropoffZipCode { get; set; }
-        
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
 
 
     }
