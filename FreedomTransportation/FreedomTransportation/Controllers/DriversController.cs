@@ -33,14 +33,7 @@ namespace FreedomTransportation.Controllers
             return View(db.Drivers.ToList());
         }
 
-        // GET: Drivers/Details/5
-        public ActionResult Details(int id)
-        {
-          Driver driver = db.Drivers.Find(id);
-           
-            return View(driver);
-        }
-
+      
         // GET: Drivers/Create
         public ActionResult Create()
         {
@@ -56,14 +49,15 @@ namespace FreedomTransportation.Controllers
             {
                 var userId = User.Identity.GetUserId();
 
-                var currentUser = (from u in db.Users where u.Id == userId select u).FirstOrDefault();
-                driver.DriversLicense = currentUser.Id ;
-                driver.Email = currentUser.Email;
-     
+                var currentUser = (from u in db.Users where u.Id == userId select u).First();
+                currentUser.Id = currentUser.Id;
+                //driver.DriversLicense = currentUser.Id ;
+                //driver.Email = currentUser.Email;
+                db.Entry(currentUser).State = EntityState.Modified;
 
                 db.Drivers.Add(driver);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = driver.Id});
             }
             //else
             //{
@@ -73,6 +67,43 @@ namespace FreedomTransportation.Controllers
             //}
             return View(driver);
         }
+        // GET: Drivers/Details/5
+        public ActionResult Details(int? id)
+        {
+            Driver driver = db.Drivers.Find(id);
+
+            return View(driver);
+        }
+
+        [HttpPost]
+        public ActionResult Details(int id, FormCollection form)
+        {
+
+            var userId = User.Identity.GetUserId();
+            
+            var Details = (from d in db.Drivers where d.ApplicationUserId == userId select d).First();
+
+            var detail = db.Drivers.Where(x => x.Id == id).FirstOrDefault();
+            //var rides = db.SchedulingRides.Where(r => r.Id.ToString() == userId);
+            db.SaveChanges();
+            return View(detail);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Drivers/Edit/5
         public ActionResult Edit(int id)
@@ -93,7 +124,7 @@ namespace FreedomTransportation.Controllers
             {
                 db.Entry(driver).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(driver);
         }

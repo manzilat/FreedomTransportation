@@ -23,21 +23,19 @@
                 <ul class="nav navbar-nav">
                     @if (User.IsInRole("Customer"))
                     {
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Schedule You're Ride", "Schedule You're Ride", "Home")</li>
+                       
+                        <li>@Html.ActionLink("Schedule You're Ride", "SchedulingRide", "SchedulingRides")</li>
 
                     }
                     @if (User.IsInRole("Driver"))
                     {
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-
+                        
+                        <li>@Html.ActionLink("Details", "Details", "Drivers")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                     }
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
 
                 </ul>
                 @Html.Partial("_LoginPartial")

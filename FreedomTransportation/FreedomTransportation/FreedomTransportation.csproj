@@ -247,6 +247,18 @@
     <Compile Include="Migrations\201811211705178_added a foreign key to scheduling ride.Designer.cs">
       <DependentUpon>201811211705178_added a foreign key to scheduling ride.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811211754453_added date and time to scheduling ride model.cs" />
+    <Compile Include="Migrations\201811211754453_added date and time to scheduling ride model.Designer.cs">
+      <DependentUpon>201811211754453_added date and time to scheduling ride model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811211851271_undo all the changes.cs" />
+    <Compile Include="Migrations\201811211851271_undo all the changes.Designer.cs">
+      <DependentUpon>201811211851271_undo all the changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811211941408_added fk to driver model.cs" />
+    <Compile Include="Migrations\201811211941408_added fk to driver model.Designer.cs">
+      <DependentUpon>201811211941408_added fk to driver model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -385,6 +397,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811211705178_added a foreign key to scheduling ride.resx">
       <DependentUpon>201811211705178_added a foreign key to scheduling ride.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211754453_added date and time to scheduling ride model.resx">
+      <DependentUpon>201811211754453_added date and time to scheduling ride model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211851271_undo all the changes.resx">
+      <DependentUpon>201811211851271_undo all the changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211941408_added fk to driver model.resx">
+      <DependentUpon>201811211941408_added fk to driver model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

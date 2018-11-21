@@ -34,13 +34,7 @@
             @Html.DisplayFor(model => model.DriversLicense)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+     
 
         <dt>
             @Html.DisplayNameFor(model => model.Email)
@@ -101,8 +95,9 @@
     </dl>
     @Html.HiddenFor(model => model.TripsId)
     @Html.HiddenFor(model => model.CustomerId)
+    @Html.HiddenFor(model => model.Password)
 </div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

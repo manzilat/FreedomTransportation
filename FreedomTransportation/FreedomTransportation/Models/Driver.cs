@@ -33,5 +33,8 @@ namespace FreedomTransportation.Models
         [ForeignKey("Trips")]
         public int? TripsId { get; set; }
         public Trips Trips { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }
