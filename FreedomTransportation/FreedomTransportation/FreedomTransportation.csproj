@@ -203,61 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811161557594_removed required from identity model.cs" />
-    <Compile Include="Migrations\201811161557594_removed required from identity model.Designer.cs">
-      <DependentUpon>201811161557594_removed required from identity model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811162016222_removes properties from identityuser.cs" />
-    <Compile Include="Migrations\201811162016222_removes properties from identityuser.Designer.cs">
-      <DependentUpon>201811162016222_removes properties from identityuser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191809408_replaced customer id into customerwalletid.cs" />
-    <Compile Include="Migrations\201811191809408_replaced customer id into customerwalletid.Designer.cs">
-      <DependentUpon>201811191809408_replaced customer id into customerwalletid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191854433_wallet id and rides are now nullable.cs" />
-    <Compile Include="Migrations\201811191854433_wallet id and rides are now nullable.Designer.cs">
-      <DependentUpon>201811191854433_wallet id and rides are now nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811201439204_added password to driver model.cs" />
-    <Compile Include="Migrations\201811201439204_added password to driver model.Designer.cs">
-      <DependentUpon>201811201439204_added password to driver model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811201458448_added a foreign key to provider,customer and driver.cs" />
-    <Compile Include="Migrations\201811201458448_added a foreign key to provider,customer and driver.Designer.cs">
-      <DependentUpon>201811201458448_added a foreign key to provider,customer and driver.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811201623156_removed some properties from drivermodel.cs" />
-    <Compile Include="Migrations\201811201623156_removed some properties from drivermodel.Designer.cs">
-      <DependentUpon>201811201623156_removed some properties from drivermodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811202050354_test.cs" />
-    <Compile Include="Migrations\201811202050354_test.Designer.cs">
-      <DependentUpon>201811202050354_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811202056083_changed the data type of city in schedulingride model.cs" />
-    <Compile Include="Migrations\201811202056083_changed the data type of city in schedulingride model.Designer.cs">
-      <DependentUpon>201811202056083_changed the data type of city in schedulingride model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811211557206_Nevin Testing.cs" />
-    <Compile Include="Migrations\201811211557206_Nevin Testing.Designer.cs">
-      <DependentUpon>201811211557206_Nevin Testing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811211705178_added a foreign key to scheduling ride.cs" />
-    <Compile Include="Migrations\201811211705178_added a foreign key to scheduling ride.Designer.cs">
-      <DependentUpon>201811211705178_added a foreign key to scheduling ride.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811211754453_added date and time to scheduling ride model.cs" />
-    <Compile Include="Migrations\201811211754453_added date and time to scheduling ride model.Designer.cs">
-      <DependentUpon>201811211754453_added date and time to scheduling ride model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811211851271_undo all the changes.cs" />
-    <Compile Include="Migrations\201811211851271_undo all the changes.Designer.cs">
-      <DependentUpon>201811211851271_undo all the changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811211941408_added fk to driver model.cs" />
-    <Compile Include="Migrations\201811211941408_added fk to driver model.Designer.cs">
-      <DependentUpon>201811211941408_added fk to driver model.cs</DependentUpon>
+    <Compile Include="Migrations\201811250541358_test.cs" />
+    <Compile Include="Migrations\201811250541358_test.Designer.cs">
+      <DependentUpon>201811250541358_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -347,6 +295,7 @@
     <Content Include="Views\Drivers\DriverTodayPickups.cshtml" />
     <Content Include="Views\SchedulingRides\SchedulingRide.cshtml" />
     <Content Include="Views\SchedulingRides\TripInfo.cshtml" />
+    <Content Include="Views\SchedulingRides\MakeAPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -365,47 +314,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811161557594_removed required from identity model.resx">
-      <DependentUpon>201811161557594_removed required from identity model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811162016222_removes properties from identityuser.resx">
-      <DependentUpon>201811162016222_removes properties from identityuser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191809408_replaced customer id into customerwalletid.resx">
-      <DependentUpon>201811191809408_replaced customer id into customerwalletid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191854433_wallet id and rides are now nullable.resx">
-      <DependentUpon>201811191854433_wallet id and rides are now nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811201439204_added password to driver model.resx">
-      <DependentUpon>201811201439204_added password to driver model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811201458448_added a foreign key to provider,customer and driver.resx">
-      <DependentUpon>201811201458448_added a foreign key to provider,customer and driver.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811201623156_removed some properties from drivermodel.resx">
-      <DependentUpon>201811201623156_removed some properties from drivermodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811202050354_test.resx">
-      <DependentUpon>201811202050354_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811202056083_changed the data type of city in schedulingride model.resx">
-      <DependentUpon>201811202056083_changed the data type of city in schedulingride model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811211557206_Nevin Testing.resx">
-      <DependentUpon>201811211557206_Nevin Testing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811211705178_added a foreign key to scheduling ride.resx">
-      <DependentUpon>201811211705178_added a foreign key to scheduling ride.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811211754453_added date and time to scheduling ride model.resx">
-      <DependentUpon>201811211754453_added date and time to scheduling ride model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811211851271_undo all the changes.resx">
-      <DependentUpon>201811211851271_undo all the changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811211941408_added fk to driver model.resx">
-      <DependentUpon>201811211941408_added fk to driver model.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811250541358_test.resx">
+      <DependentUpon>201811250541358_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace FreedomTransportation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changedthedatatypeofcityinschedulingridemodel : IMigrationMetadata
+    public sealed partial class test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changedthedatatypeofcityinschedulingridemodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811202056083_changed the data type of city in schedulingride model"; }
+            get { return "201811250541358_test"; }
         }
         
         string IMigrationMetadata.Source
