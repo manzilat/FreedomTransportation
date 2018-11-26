@@ -23,13 +23,14 @@
                 <ul class="nav navbar-nav">
                     @if (User.IsInRole("Customer"))
                     {
-                       
+
                         <li>@Html.ActionLink("Schedule You're Ride", "SchedulingRide", "SchedulingRides")</li>
+                        <li>@Html.ActionLink("Feedback", "Feedback", "Feedbacks")</li>
 
                     }
                     @if (User.IsInRole("Driver"))
                     {
-                        
+
                         <li>@Html.ActionLink("Details", "Details", "Drivers")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

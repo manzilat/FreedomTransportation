@@ -13,27 +13,13 @@ namespace FreedomTransportation.Controllers
     public class DriversController : Controller
     {
         public ApplicationDbContext db = new ApplicationDbContext();
-        //public ActionResult DriverTodayPickups()
-        //{
-        //    var userId = User.Identity.GetUserId();
-        //    var currentDriver = (from d in db.Drivers where d.Id.ToString() == userId select d).FirstOrDefault();
-           
-        //    var todayDate = DateTime.Now.Date;
-        //    var customersMatchingZip = (from c in db.Customers where c.Zip == currentDriver.Zip select c).ToList();
 
-        //    if (!customersMatchingZip.Any())
-        //    {
-        //        return View();
-        //    }
-        //    return View(customersMatchingZip);
-        //}
-        // GET: Drivers
         public ActionResult Index()
         {
             return View(db.Drivers.ToList());
         }
 
-      
+
         // GET: Drivers/Create
         public ActionResult Create()
         {
@@ -57,7 +43,7 @@ namespace FreedomTransportation.Controllers
 
                 db.Drivers.Add(driver);
                 db.SaveChanges();
-                return RedirectToAction("Details", new { id = driver.Id});
+                return RedirectToAction("Details", new { id = driver.Id });
             }
             //else
             //{
@@ -80,7 +66,7 @@ namespace FreedomTransportation.Controllers
         {
 
             var userId = User.Identity.GetUserId();
-            
+
             var Details = (from d in db.Drivers where d.ApplicationUserId == userId select d).First();
 
             var detail = db.Drivers.Where(x => x.Id == id).FirstOrDefault();
@@ -89,28 +75,12 @@ namespace FreedomTransportation.Controllers
             return View(detail);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // GET: Drivers/Edit/5
         public ActionResult Edit(int id)
         {
-           
+
             Driver driver = db.Drivers.Find(id);
-            
+
             return View(driver);
         }
 
@@ -132,9 +102,9 @@ namespace FreedomTransportation.Controllers
         // GET: Employees/Delete/5
         public ActionResult Delete(int id)
         {
-          
+
             Driver driver = db.Drivers.Find(id);
-          
+
             return View(driver);
         }
 
@@ -147,6 +117,25 @@ namespace FreedomTransportation.Controllers
             db.Drivers.Remove(driver);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult ConfirmPickup(string id)
+        {
+            Customer customer = db.Customers.Find(id);
+            return View(customer);
+        }
+
+        [HttpPost, ActionName("ConfirmPickup")]
+        public ActionResult ConfirmedPickup(string id)
+        {
+            var currentCustomer = (from c in db.Customers where c.ApplicationUserId == id select c).FirstOrDefault();
+
+
+            if (currentCustomer != null) currentCustomer.IsConfirmed = true;
+
+            db.Entry(currentCustomer).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("EmployeeTodayPickups");
+
         }
     }
 }

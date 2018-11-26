@@ -47,7 +47,7 @@ namespace FreedomTransportation.Controllers
                 dynamic result = serializer.DeserializeObject(sr.ReadToEnd());
 
                 // Read the distance property from the JSON request
-                var distance = result["rows"][0]["elements"][0]["distance"]["text"]; // yields "1,300 KM"
+                var distance = result["rows"][3]["elements"][0]["distance"]["text"]; // yields "1,300 KM"
                 var serviceCharge = 0.50;//TODO: Implement a service charge
                 var costPerRide = Double.Parse(distance) * serviceCharge;
             }

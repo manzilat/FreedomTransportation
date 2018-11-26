@@ -76,13 +76,60 @@
 
     </dl>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Calculating Route (Mileage)</h2>
+        <p>This demonstrates getting and displaying the distance between two points</p>
+        <div>
+            <div>
+                Travel From : <input id="travelfrom" type="text" name="name" value="" />
+                To : <input id="travelto" type="text" name="name" value="Milwaukee, WI, USA" />
+                <input type="button" value="Get Route" onclick="GetRoute()" />
+            </div>
+            <div>
+                <div id="dvDistance">   </div>
+            </div>
+        </div>
+        <div id="dvMap" style="min-height:500px"></div>
+    </div>
+    <div> Add Destination</div>
+    <div>
+        <input id="travelto" type="text" name="name" value="Oving, UK" />
+        <input type="button" value="Add" onclick="PushDestination()" />
+        <a href="#" onclick="setDestination('Tagmere, UK')">Tagmere, UK. </a>
+        <a href="#" onclick="setDestination('Bosham, UK')">Bosham, UK</a>
+    </div>
+    <div id="destinations"></div><br />
+    Source : <input id="travelfrom" type="text" name="name" value="Chichester, UK" />
+
+    <input type="button" value="Calculate" onclick="GetRoute()" />
+    <p></p>
+    <br />
+    <div id="dvDistance">
+        <table id="tblResults" border="1" cellpadding="10">
+            <tr>
+                <th> Start </th>
+                <th> End </th>
+                <th> Distance </th>
+                <th> Duration </th>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="dvMap" style="min-height:500px"></div>
+</div>
 @*<p>
-    @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+        @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
         <input type="button" class="btn btn-success" value="Pay Now" onclick="location.href='@Url.Action("MakeAPayment", "SchedulingRides")'" />&nbsp;
-       @*// <input type="submit" value="Pay Now" class="btn btn-success" />*@
+        @*// <input type="submit" value="Pay Now" class="btn btn-success" />*@
     </div>
 </div>
+
+@section scripts{
+//Insert the javascript code here...
+}

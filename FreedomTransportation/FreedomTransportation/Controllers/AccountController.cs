@@ -172,6 +172,10 @@ namespace FreedomTransportation.Controllers
                     {
                         return RedirectToAction("Create", "Customers");
                     }
+                    else if (model.UserRole == "TransportationProvider")
+                    {
+                        return RedirectToAction("Create", "TransportationProviders");
+                    }
                     else
                     {
                         return RedirectToAction("Index", "Home");

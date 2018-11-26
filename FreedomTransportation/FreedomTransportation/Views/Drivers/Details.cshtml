@@ -34,7 +34,7 @@
             @Html.DisplayFor(model => model.DriversLicense)
         </dd>
 
-     
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Email)
@@ -97,7 +97,13 @@
     @Html.HiddenFor(model => model.CustomerId)
     @Html.HiddenFor(model => model.Password)
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+    @*<p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>*@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" class="btn btn-success" value="View Schedule" onclick="location.href='@Url.Action("Index", "SchedulingRides")'" />&nbsp;
+            @*// <input type="submit" value="Pay Now" class="btn btn-success" />*@
+        </div>
+    </div>

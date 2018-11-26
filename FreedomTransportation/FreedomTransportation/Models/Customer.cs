@@ -32,6 +32,6 @@ namespace FreedomTransportation.Models
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-
+        public bool IsConfirmed { get; internal set; }
     }
 }

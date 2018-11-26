@@ -26,5 +26,14 @@ namespace FreedomTransportation.Controllers
 
             return View();
         }
+        public ActionResult Demo1()
+        {
+            return View();
+        }
+
+        public ActionResult Demo2()
+        {
+            return View();
+        }
     }
 }
