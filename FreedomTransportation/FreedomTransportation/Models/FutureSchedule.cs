@@ -20,6 +20,9 @@ namespace FreedomTransportation.Models
         public DateTime Date { get; set; }
         [Required(ErrorMessage = "Time Required")]
         public string Time { get; set; }
+        public string PickupAddress { get; set; }
+        public string DropoffAddress { get; set; }
+        public string Email { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

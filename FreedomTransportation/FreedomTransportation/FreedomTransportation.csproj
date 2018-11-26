@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DriversController.cs" />
+    <Compile Include="Controllers\FutureScheduleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SchedulingRidesController.cs" />
@@ -228,13 +229,20 @@
     <Compile Include="Migrations\201811261941183_added a new model for future booking.Designer.cs">
       <DependentUpon>201811261941183_added a new model for future booking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811261953213_added a new properties in futurescheduling model.cs" />
+    <Compile Include="Migrations\201811261953213_added a new properties in futurescheduling model.Designer.cs">
+      <DependentUpon>201811261953213_added a new properties in futurescheduling model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811262010208_added a email properties in futurescheduling model.cs" />
+    <Compile Include="Migrations\201811262010208_added a email properties in futurescheduling model.Designer.cs">
+      <DependentUpon>201811262010208_added a email properties in futurescheduling model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerWallet.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\FutureSchedule.cs" />
-    <Compile Include="Models\FutureScheduleController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Roles.cs" />
@@ -326,6 +334,8 @@
     <Content Include="Views\Drivers\ScheduleDetails.cshtml" />
     <Content Include="Views\SchedulingRides\Redirect.cshtml" />
     <Content Include="Views\FutureSchedule\Create.cshtml" />
+    <Content Include="Views\FutureSchedule\Index.cshtml" />
+    <Content Include="Views\FutureSchedule\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -358,6 +368,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811261941183_added a new model for future booking.resx">
       <DependentUpon>201811261941183_added a new model for future booking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261953213_added a new properties in futurescheduling model.resx">
+      <DependentUpon>201811261953213_added a new properties in futurescheduling model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811262010208_added a email properties in futurescheduling model.resx">
+      <DependentUpon>201811262010208_added a email properties in futurescheduling model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
