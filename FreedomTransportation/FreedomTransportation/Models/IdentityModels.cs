@@ -38,5 +38,6 @@ namespace FreedomTransportation.Models
         public DbSet<SchedulingRide> SchedulingRides { get; set; }
         public DbSet<Trips> Trips { get; set; }
         public DbSet<TransportationProvider> TransportationProviders { get; set; }
+        public DbSet<FutureSchedule> FutureSchedule { get; set; }
     }
 }

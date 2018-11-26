@@ -60,6 +60,11 @@ namespace FreedomTransportation.Controllers
             return View();
         }
 
+        public ActionResult Redirect(int id)
+        {
+            return View();
+        }
+
         // GET: SchedulingRides/Details/5
         public ActionResult Details(int id)
         {
