@@ -1,5 +1,8 @@
-﻿using System;
+﻿using FreedomTransportation.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +11,7 @@ namespace FreedomTransportation.Controllers
 {
     public class TransportationProvidersController : Controller
     {
+        public ApplicationDbContext db = new ApplicationDbContext();
         // GET: TransportationProviders
         public ActionResult Index()
         {
@@ -15,11 +19,24 @@ namespace FreedomTransportation.Controllers
         }
 
         // GET: TransportationProviders/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int ID)
         {
-            return View();
+            TransportationProvider transportationProvider = db.TransportationProviders.Find(ID);
+            return View(transportationProvider);
         }
+        [HttpPost]
+        public ActionResult Details(int ID, FormCollection form)
+        {
 
+            var userId = User.Identity.GetUserId();
+
+            var Details = (from d in db.TransportationProvider where d.ApplicationUserId == userId select d).First();
+
+            var detail = db.TransportationProvider.Where(x => x.Id == ID).FirstOrDefault();
+           
+            db.SaveChanges();
+            return View(detail);
+        }
         // GET: TransportationProviders/Create
         public ActionResult Create()
         {
@@ -28,18 +45,21 @@ namespace FreedomTransportation.Controllers
 
         // POST: TransportationProviders/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,ProviderName,Email,Phone,Street,State,Zip,City,DriverId")] TransportationProvider transportationProvider  )
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var userId = User.Identity.GetUserId();
+                var currentProvider = (from p in db.Users where p.Id == userId select p);
+                db.Entry(currentProvider).State = EntityState.Modified;
+                
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            return View(transportationProvider);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                
         }
 
         // GET: TransportationProviders/Edit/5

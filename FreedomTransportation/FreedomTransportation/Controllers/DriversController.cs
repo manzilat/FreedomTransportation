@@ -16,7 +16,7 @@ namespace FreedomTransportation.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Drivers.ToList());
+            return View(db.TransportationProvider.ToList());
         }
 
 
@@ -41,7 +41,7 @@ namespace FreedomTransportation.Controllers
                 //driver.Email = currentUser.Email;
                 db.Entry(currentUser).State = EntityState.Modified;
 
-                db.Drivers.Add(driver);
+                db.TransportationProvider.Add(driver);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = driver.Id });
             }
@@ -54,9 +54,9 @@ namespace FreedomTransportation.Controllers
             return View(driver);
         }
         // GET: Drivers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            Driver driver = db.Drivers.Find(id);
+            Driver driver = db.TransportationProvider.Find(id);
 
             return View(driver);
         }
@@ -67,9 +67,9 @@ namespace FreedomTransportation.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var Details = (from d in db.Drivers where d.ApplicationUserId == userId select d).First();
+            var Details = (from d in db.TransportationProvider where d.ApplicationUserId == userId select d).First();
 
-            var detail = db.Drivers.Where(x => x.Id == id).FirstOrDefault();
+            var detail = db.TransportationProvider.Where(x => x.Id == id).FirstOrDefault();
             //var rides = db.SchedulingRides.Where(r => r.Id.ToString() == userId);
             db.SaveChanges();
             return View(detail);
@@ -79,7 +79,7 @@ namespace FreedomTransportation.Controllers
         public ActionResult Edit(int id)
         {
 
-            Driver driver = db.Drivers.Find(id);
+            Driver driver = db.TransportationProvider.Find(id);
 
             return View(driver);
         }
@@ -88,7 +88,7 @@ namespace FreedomTransportation.Controllers
         // POST: Drivers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Driver'sLicense,Email,Phone,Street,State,Zip,Status,CustomerId,TripId")] Driver driver)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DriversLicense,Email,Phone,Street,City,State,Zip,Status,CustomerId,TripId")] Driver driver)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace FreedomTransportation.Controllers
         public ActionResult Delete(int id)
         {
 
-            Driver driver = db.Drivers.Find(id);
+            Driver driver = db.TransportationProvider.Find(id);
 
             return View(driver);
         }
@@ -113,8 +113,8 @@ namespace FreedomTransportation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Driver driver = db.Drivers.Find(id);
-            db.Drivers.Remove(driver);
+            Driver driver = db.TransportationProvider.Find(id);
+            db.TransportationProvider.Remove(driver);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -137,5 +137,10 @@ namespace FreedomTransportation.Controllers
             return RedirectToAction("EmployeeTodayPickups");
 
         }
+        public ActionResult ScheduleDetails()
+        {
+            return View(db.Customers.ToList());
+        }
+
     }
 }

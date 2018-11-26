@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,9 +32,11 @@ namespace FreedomTransportation.Controllers
             return View();
         }
 
-        public ActionResult Demo2()
+        public ActionResult Stripe()
         {
-            return View();
+        var stripePublishKey = ConfigurationManager.AppSettings["stripePublishableKey"];
+         ViewBag.StripePublishKey = stripePublishKey;
+        return View();
         }
     }
 }

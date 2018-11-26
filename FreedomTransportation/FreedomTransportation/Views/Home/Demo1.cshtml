@@ -16,6 +16,13 @@
                 To : <input id="travelto" type="text" name="name" value="" />
                 <input type="button" value="Get Route" onclick="GetRoute()" />
             </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" class="btn btn-success" value="Pay Now" onclick="location.href='@Url.Action("MakeAPayment", "SchedulingRides")'" />&nbsp;
+                    @*// <input type="submit" value="Pay Now" class="btn btn-success" />*@
+                </div>
+            </div>
             <div>
                 <div id="dvDistance"></div>
             </div>
@@ -93,7 +100,7 @@
                     var ratePerRide;//FreedomTransportation CEO set rate
 
                     mileageTravelled = parseFloat(distance);//Convert text value to decimal
-                    ratePerRide = 7.99;//Competitive rates :)
+                    ratePerRide = 1.00;//Competitive rates :)
                     var totalCostOfTrip = parseFloat(mileageTravelled * ratePerRide);//FreedomTransportation Marketing
 
                     //Removing the 100.01 '.' in decimal -> cents conversion -> 10001 cents -> stripe api
@@ -113,5 +120,7 @@
         }
 
     </script>
+
     <!-- end code for example 1 -->
+
 }

@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
+
 namespace FreedomTransportation.Controllers
 {
     public class SchedulingRidesController : Controller
@@ -47,9 +48,9 @@ namespace FreedomTransportation.Controllers
                 dynamic result = serializer.DeserializeObject(sr.ReadToEnd());
 
                 // Read the distance property from the JSON request
-                var distance = result["rows"][3]["elements"][0]["distance"]["text"]; // yields "1,300 KM"
-                var serviceCharge = 0.50;//TODO: Implement a service charge
-                var costPerRide = Double.Parse(distance) * serviceCharge;
+               // var distance = result["rows"][3]["elements"][0]["distance"]["text"]; // yields "1,300 KM"
+               // var serviceCharge = 0.50;//TODO: Implement a service charge
+             //   var costPerRide = Double.Parse(distance) * serviceCharge;
             }
             //TotalBill = Bill in Dollar Amount for presentation on View pages
             ViewBag.TotalBill = 0;//Insert variable for calculated value here

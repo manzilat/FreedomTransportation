@@ -49,7 +49,7 @@ namespace FreedomTransportation.Controllers
             return View(customer);
         }
         // GET: Customers/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             
             Customer customer = db.Customers.Find(id);

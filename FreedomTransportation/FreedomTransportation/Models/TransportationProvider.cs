@@ -21,7 +21,7 @@ namespace FreedomTransportation.Models
         public string lat { get; set; }
         public string lng { get; set; }
         [ForeignKey("Driver")]
-        public int DriverId { get; set; }
+        public int? DriverId { get; set; }
         public Driver Driver { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }

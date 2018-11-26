@@ -46,8 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Stripe.net, Version=21.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.21.5.0\lib\net45\Stripe.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -212,6 +216,14 @@
     <Compile Include="Migrations\201811251836553_added one property.Designer.cs">
       <DependentUpon>201811251836553_added one property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811261543390_fk is nullable .cs" />
+    <Compile Include="Migrations\201811261543390_fk is nullable .Designer.cs">
+      <DependentUpon>201811261543390_fk is nullable .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811261607594_removed email and password from driver model.cs" />
+    <Compile Include="Migrations\201811261607594_removed email and password from driver model.Designer.cs">
+      <DependentUpon>201811261607594_removed email and password from driver model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -303,10 +315,12 @@
     <Content Include="Views\SchedulingRides\MakeAPayment.cshtml" />
     <Content Include="Views\Drivers\ConfirmPickup.cshtml" />
     <Content Include="Views\Home\Demo1.cshtml" />
+    <Content Include="Views\TransportationProviders\Create.cshtml" />
+    <Content Include="Views\TransportationProviders\Details.cshtml" />
+    <Content Include="Views\Drivers\ScheduleDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\TransportationProviders\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -327,6 +341,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811251836553_added one property.resx">
       <DependentUpon>201811251836553_added one property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261543390_fk is nullable .resx">
+      <DependentUpon>201811261543390_fk is nullable .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811261607594_removed email and password from driver model.resx">
+      <DependentUpon>201811261607594_removed email and password from driver model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

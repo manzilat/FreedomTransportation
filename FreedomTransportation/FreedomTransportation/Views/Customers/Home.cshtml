@@ -85,8 +85,8 @@ ViewBag.Title = "Home";
     </dl>
 </div>
 <p>
-    <input type="button" class="btn btn-success" value="Schedule A Ride" onclick="location.href='@Url.Action("SchedulingRide", "SchedulingRides")'" />&nbsp;
-                                                                                                                @*displayname,controller*@
+    <input type="button" class="btn btn-success" value="Schedule A Ride" onclick="location.href='@Url.Action("Demo1", "Home")'" />&nbsp;
+                                                                                                                @*view,controller*@
 
    @Html.ActionLink("Edit My Info", "Edit", new { id = Model.Id}, new { @class = "btn btn-success" })&nbsp;
     @Html.ActionLink("Delete My Account", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })&nbsp;
