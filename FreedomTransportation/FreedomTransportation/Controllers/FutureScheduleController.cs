@@ -22,7 +22,7 @@ namespace FreedomTransportation.Models
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PickUpId,CustomerId,Date,Time,PickupAddress,DropoffAddress")] FutureSchedule futureSchedule)
+        public ActionResult Create([Bind(Include = "PickUpId,CustomerId,Date,Time,Email,PickupAddress,DropoffAddress")] FutureSchedule futureSchedule)
         {
             if (ModelState.IsValid)
             {
@@ -31,18 +31,18 @@ namespace FreedomTransportation.Models
                 //futureSchedule.CustomerId = selectUser.CustomerId;
                 db.FutureSchedule.Add(futureSchedule);
                 db.SaveChanges();
-                return RedirectToAction("Details");
+                return View("Details", futureSchedule);
             }
 
 
             return View(futureSchedule);
         }
-        public ActionResult Details(int? id)
+        public ActionResult Details(FutureSchedule futureSchedule)
         {
 
-            FutureSchedule futureSchedule = db.FutureSchedule.Find(id);
+            FutureSchedule futureScheduleNow = db.FutureSchedule.Find(futureSchedule.PickUpId);
 
-            return View();
+            return View(futureSchedule);
         }
     }
 }

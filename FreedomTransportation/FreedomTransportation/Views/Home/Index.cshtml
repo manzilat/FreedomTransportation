@@ -2,30 +2,80 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        #map {
+            height: 520px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var geocoder;
+        var map;
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+        function initMap() {
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(-34.397, 150.644);//Milwauke
+            var mapOptions = {
+                zoom: 8,
+                center: latlng
+            }
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var streetName = "@ViewBag.Address.ToString()";
+            var zip = "@ViewBag.Zipcode.ToString()";
+            var address = (streetName + " " + zip + " ");
+
+            geocoder.geocode({ 'address': address /*+ " " + zip */ }, function (results, status) {
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        animation: google.maps.Animation.BOUNCE, //Make this baby bounce
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+
+
+            //Test - Failed Attempt to list multiple addresses
+            //DEBUG: Could not figure out how to obtain proper model as list
+            //ATTEMPT: Store the dataset as an ARRAY into VIEWBAG and enumerate over the list
+            @*@foreach(var address in ViewBag.SalesAddressList)
+            {
+                foreach(var zipcode in ViewBag.SalesZipCodeList)
+                {
+                    <text>//Render code without text element
+                        geocoder.geocode({
+                            'address': @{"'" + address + ' ' + zipcode + "'"}, function (results, status) {
+                        if (status == 'OK') {
+                            map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                        position: results[0].geometry.location,
+                        title: "No Title"
+                    });
+                }
+            });
+                    </text>
+                }
+            }*@
+
+        }
+    </script>
+    
+    @*</script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=@($"{Key.key}")&callback=initMap"
+                async defer></script>*@
+</body>
+</html>

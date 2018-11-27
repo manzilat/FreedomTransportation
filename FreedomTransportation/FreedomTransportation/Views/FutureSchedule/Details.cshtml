@@ -10,13 +10,7 @@
     <h4>FutureSchedule</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Date)
@@ -58,19 +52,21 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUserId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUserId)
-        </dd>
 
     </dl>
-    @Html.HiddenFor(model => model.ApplicationUserId)
-    @Html.HiddenFor(model => model.CustomerId)
+
 </div>
-@*<p>
+@Html.HiddenFor(model => model.ApplicationUserId)
+@Html.HiddenFor(model => model.CustomerId)
+<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.PickUpId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>*@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" class="btn btn-success" value="Schedule A Ride" onclick="location.href='@Url.Action("Demo1", "Home")'" />&nbsp;
+            
+            @*// <input type="submit" value="Pay Now" class="btn btn-success" />*@
+        </div>
+    </div>
+</p>
