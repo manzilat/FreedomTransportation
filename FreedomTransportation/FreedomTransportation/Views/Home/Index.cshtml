@@ -5,77 +5,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Map</title>
+    <title>Freedom Transporation Home Page</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <style>
-        #map {
-            height: 520px;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
-    <div id="map"></div>
-    <script>
-        var geocoder;
-        var map;
-
-        function initMap() {
-            geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(-34.397, 150.644);//Milwauke
-            var mapOptions = {
-                zoom: 8,
-                center: latlng
-            }
-            map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-            var streetName = "@ViewBag.Address.ToString()";
-            var zip = "@ViewBag.Zipcode.ToString()";
-            var address = (streetName + " " + zip + " ");
-
-            geocoder.geocode({ 'address': address /*+ " " + zip */ }, function (results, status) {
-                if (status == 'OK') {
-                    map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        animation: google.maps.Animation.BOUNCE, //Make this baby bounce
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-
-
-            //Test - Failed Attempt to list multiple addresses
-            //DEBUG: Could not figure out how to obtain proper model as list
-            //ATTEMPT: Store the dataset as an ARRAY into VIEWBAG and enumerate over the list
-            @*@foreach(var address in ViewBag.SalesAddressList)
-            {
-                foreach(var zipcode in ViewBag.SalesZipCodeList)
-                {
-                    <text>//Render code without text element
-                        geocoder.geocode({
-                            'address': @{"'" + address + ' ' + zipcode + "'"}, function (results, status) {
-                        if (status == 'OK') {
-                            map.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                            map: map,
-                        position: results[0].geometry.location,
-                        title: "No Title"
-                    });
-                }
-            });
-                    </text>
-                }
-            }*@
-
-        }
-    </script>
-    
-    @*</script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=@($"{Key.key}")&callback=initMap"
-                async defer></script>*@
+    <h1>Freedom Transportation</h1>
+    <p>At freedom transportation we offer the best rates possible in Milwaukee.</p>
+    @if (!User.Identity.IsAuthenticated) //Customer is not logged in
+    {
+        <h2>Please login.</h2>
+        <h3>How To - Instructions</h3>
+        <ol>
+            <li>Customer must login</li>
+            <li>Customer must request a ride</li>
+            <li>Customer must enter address and desintation</li>
+            <li>Our serivce will compute distance and cost</li>
+            <li>Customer must make a payment for ride to be scheduled</li>
+        </ol>
+        <p><strong>Note:</strong> All employees must login to view all customer requests.</p>
+    }
+    else //Customer is logged in
+    {
+        //You have two options to go to differnet pages after login
+        <h1>You are now logged in.</h1>
+        <h2>Choose from several options below:</h2>
+        <ul>
+            <li><a href="/FutureSchedule/Create">Book A Ride</a></li>
+            <li><a href="/Home/Demo1">Calculate Cost of Ride</a></li>
+            <li><a href="/Feedback/Index">Give Us Feedback</a></li>
+        </ul>
+        //RedirectToAction("Action","Controller");
+        //Response.Redirect("/Path/");
+    }
 </body>
 </html>

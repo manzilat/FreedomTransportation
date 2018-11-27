@@ -14,7 +14,6 @@ namespace FreedomTransportation
         {
             ConfigureAuth(app);
             CreateRolls();
-
         }
         private void CreateRolls()
         {

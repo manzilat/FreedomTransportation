@@ -5,31 +5,25 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Example 1 - simple distance between two points</h2>
-        <p>
-            This demonstrates getting and displaying the distance between two points
-        </p>
-
+        <h2>Calculate Your Route</h2>
         <div>
             <div>
-                Travel From : <input id="travelfrom" type="text" name="name" value="" />
-                To : <input id="travelto" type="text" name="name" value="" />
+                Travel From : <input id="travelfrom" type="text" list="dataddresslist" name="name" value="" />
+                To : <input id="travelto" type="text" list="dataddresslist" name="name" value="" />
+                <datalist id="dataddresslist">
+                    <option value="4021 N Allis, Milwaukee, WI, USA">4021 N Allis, Milwaukee, WI, USA</option>
+                    <option value="4022 S Allis, Milwaukee, WI, USA">4022 S Allis, Milwaukee, WI, USA</option>
+                    <option value="4023 E Allis, Milwaukee, WI, USA">4023 E Allis, Milwaukee, WI, USA</option>
+                    <option value="4024 W Allis, Milwaukee, WI, USA">4024 W Allis, Milwaukee, WI, USA</option>
+                </datalist>
                 <input type="button" value="Get Route" onclick="GetRoute()" />
             </div>
-            <br />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="button" class="btn btn-success" value="Pay Now" onclick="location.href='@Url.Action("MakeAPayment", "SchedulingRides")'" />&nbsp;
-                    @*// <input type="submit" value="Pay Now" class="btn btn-success" />*@
-                </div>
-            </div>
-            <div>
-                <div id="dvDistance"></div>
-            </div>
-
+        </div>
+        <div id="dvDistance">Enter a route to get distance information</div>
+        <div class="form-group">
+            <input type="button" class="btn btn-success" value="Pay Now" onclick="location.href='@Url.Action("MakeAPayment", "SchedulingRides")'" />&nbsp;
         </div>
         <div id="dvMap" style="min-height:500px"></div>
-
     </div>
 </div>
 
@@ -37,11 +31,7 @@
 
     <!--ENSURE YOU CHANGE TO YOUR OWN API KEY HERE !!! -->
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCSo3QsQQnuXdnT7FXpy6kLulZ3crDKXw4" type="text/javascript"></script>
-
-    <!-- code for example 1 -->
     <script>
-
-
         var source, destination;
         var directionsDisplay;
         var directionsService = new google.maps.DirectionsService();
@@ -63,7 +53,6 @@
         function GetRoute() {
 
             directionsDisplay.setMap(map);
-
             source = document.getElementById("travelfrom").value;
             destination = document.getElementById("travelto").value;
 
@@ -109,10 +98,9 @@
 
                     duration = parseFloat(duration / 60).toFixed(2);
                     dvDistance.innerHTML = "";
-                    dvDistance.innerHTML += "Distance: " + distance + "<br />";
-                    dvDistance.innerHTML += "Time: " + duration + " min <br/>";
+                    dvDistance.innerHTML += "Distance: " + distance + " / ";
+                    dvDistance.innerHTML += "Time: " + duration + " min / ";
                     dvDistance.innerHTML += "Cost: $" + totalCostOfTrip + "USD";
-                    console.log(totalCostOfTrip);
                 } else {
                     alert("Unable to find the distance via road.");
                 }
@@ -120,7 +108,4 @@
         }
 
     </script>
-
-    <!-- end code for example 1 -->
-
 }

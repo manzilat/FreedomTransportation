@@ -202,6 +202,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\ErrorViewModel.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FutureScheduleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -241,6 +242,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerWallet.cs" />
     <Compile Include="Models\Driver.cs" />
@@ -338,10 +340,11 @@
     <Content Include="Views\FutureSchedule\Create.cshtml" />
     <Content Include="Views\FutureSchedule\Index.cshtml" />
     <Content Include="Views\FutureSchedule\Details.cshtml" />
+    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\Feedback\Sent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Feedbacks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

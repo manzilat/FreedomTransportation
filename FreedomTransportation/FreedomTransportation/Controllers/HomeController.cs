@@ -11,7 +11,7 @@ namespace FreedomTransportation.Controllers
 {
     public class HomeController : Controller
     {
-        
+
 
         public ActionResult Index()
         {
@@ -20,15 +20,11 @@ namespace FreedomTransportation.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         public ActionResult Demo1()
@@ -38,10 +34,10 @@ namespace FreedomTransportation.Controllers
 
         public ActionResult Stripe()
         {
-        var stripePublishKey = ConfigurationManager.AppSettings["stripePublishableKey"];
-         ViewBag.StripePublishKey = stripePublishKey;
-        return View();
+            //TODO: Enter STRIPE API Test KEY for this to show up on http://www.stripe.com
+            var stripePublishKey = ConfigurationManager.AppSettings["stripePublishableKey"];
+            ViewBag.StripePublishKey = stripePublishKey;
+            return View();
         }
-       
     }
 }
