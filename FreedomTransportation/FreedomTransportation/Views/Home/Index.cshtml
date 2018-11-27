@@ -12,7 +12,7 @@
 <body>
     <h1>Freedom Transportation</h1>
     <p>At freedom transportation we offer the best rates possible in Milwaukee.</p>
-    @if (!User.Identity.IsAuthenticated) //Customer is not logged in
+    @if (!User.Identity.IsAuthenticated && User.IsInRole("Customer")) //Customer is not logged in
     {
         <h2>Please login.</h2>
         <h3>How To - Instructions</h3>
@@ -31,7 +31,7 @@
         <h1>You are now logged in.</h1>
         <h2>Choose from several options below:</h2>
         <ul>
-            <li><a href="/FutureSchedule/Create">Book A Ride</a></li>
+            <li><a href="/FutureSchedule/Create">Schedule You're Ride For Later</a></li>
             <li><a href="/Home/Demo1">Calculate Cost of Ride</a></li>
             <li><a href="/Feedback/Index">Give Us Feedback</a></li>
         </ul>

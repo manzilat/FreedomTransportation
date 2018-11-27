@@ -1,7 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Demo1";
+    ViewBag.Title = "Route";
 }
+
+<h2>Route</h2>
 
 <div class="row">
     <div class="col-md-12">
@@ -104,11 +106,10 @@
                 }
             });
         }
-
-    </script><center>
+    </script>
+<center>
                  <div>
-                     <input type="button" class="btn btn-success" value="Schedule" onclick="location.href='@Url.Action("SchedulingRide", "SchedulingRides")'" />
+                     <input type="button" class="btn btn-success" value="Pay" onclick="location.href='@Url.Action("MakeAPayment", "SchedulingRides")'" />
                  </div>
-</center>
-   
-}
+    </center>
+    }

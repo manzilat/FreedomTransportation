@@ -73,7 +73,8 @@ namespace FreedomTransportation.Controllers
 
         public ActionResult SchedulingRide()
         {
-            return View();
+            SchedulingRide ride = new SchedulingRide();
+            return View(ride);
         }
 
         [HttpPost]
@@ -104,11 +105,11 @@ namespace FreedomTransportation.Controllers
             
 
             var userId = User.Identity.GetUserId();
-            //TripInfo.ApplicationUserId = userId;
+            
             var schedulingRide = (from s in db.Customers where s.ApplicationUserId == userId select s).First();
       
             var pickup = db.SchedulingRides.Where(x => x.Id == id).FirstOrDefault();
-            //var rides = db.SchedulingRides.Where(r => r.Id.ToString() == userId);
+            var rides = db.SchedulingRides.Where(r => r.Id.ToString() == userId);
             db.SaveChanges();
             return View(pickup);
         }

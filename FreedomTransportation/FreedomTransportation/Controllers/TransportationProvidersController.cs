@@ -30,9 +30,9 @@ namespace FreedomTransportation.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var Details = (from d in db.TransportationProvider where d.ApplicationUserId == userId select d).First();
+            var Details = (from d in db.Drivers where d.ApplicationUserId == userId select d).First();
 
-            var detail = db.TransportationProvider.Where(x => x.Id == ID).FirstOrDefault();
+            var detail = db.Drivers.Where(x => x.Id == ID).FirstOrDefault();
            
             db.SaveChanges();
             return View(detail);

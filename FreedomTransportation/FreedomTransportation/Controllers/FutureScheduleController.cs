@@ -44,5 +44,9 @@ namespace FreedomTransportation.Models
 
             return View(futureSchedule);
         }
+        public ActionResult Route()
+        {
+            return View();
+        }
     }
 }

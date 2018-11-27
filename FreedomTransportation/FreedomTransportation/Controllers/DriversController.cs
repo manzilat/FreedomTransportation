@@ -16,7 +16,7 @@ namespace FreedomTransportation.Controllers
 
         public ActionResult Index()
         {
-            return View(db.TransportationProvider.ToList());
+            return View(db.Drivers.ToList());
         }
 
 
@@ -41,7 +41,7 @@ namespace FreedomTransportation.Controllers
                 //driver.Email = currentUser.Email;
                 db.Entry(currentUser).State = EntityState.Modified;
 
-                db.TransportationProvider.Add(driver);
+                db.Drivers.Add(driver);
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = driver.Id });
             }
@@ -56,7 +56,7 @@ namespace FreedomTransportation.Controllers
         // GET: Drivers/Details/5
         public ActionResult Details(int id)
         {
-            Driver driver = db.TransportationProvider.Find(id);
+            Driver driver = db.Drivers.Find(id);
 
             return View(driver);
         }
@@ -67,9 +67,9 @@ namespace FreedomTransportation.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            var Details = (from d in db.TransportationProvider where d.ApplicationUserId == userId select d).First();
+            var Details = (from d in db.Drivers where d.ApplicationUserId == userId select d).First();
 
-            var detail = db.TransportationProvider.Where(x => x.Id == id).FirstOrDefault();
+            var detail = db.Drivers.Where(x => x.Id == id).FirstOrDefault();
             //var rides = db.SchedulingRides.Where(r => r.Id.ToString() == userId);
             db.SaveChanges();
             return View(detail);
@@ -79,7 +79,7 @@ namespace FreedomTransportation.Controllers
         public ActionResult Edit(int id)
         {
 
-            Driver driver = db.TransportationProvider.Find(id);
+            Driver driver = db.Drivers.Find(id);
 
             return View(driver);
         }
@@ -103,7 +103,7 @@ namespace FreedomTransportation.Controllers
         public ActionResult Delete(int id)
         {
 
-            Driver driver = db.TransportationProvider.Find(id);
+            Driver driver = db.Drivers.Find(id);
 
             return View(driver);
         }
@@ -113,8 +113,8 @@ namespace FreedomTransportation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Driver driver = db.TransportationProvider.Find(id);
-            db.TransportationProvider.Remove(driver);
+            Driver driver = db.Drivers.Find(id);
+            db.Drivers.Remove(driver);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

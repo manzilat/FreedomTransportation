@@ -3,7 +3,7 @@ namespace FreedomTransportation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test : DbMigration
+    public partial class changesweremadeinidentitymodel : DbMigration
     {
         public override void Up()
         {
@@ -25,6 +25,7 @@ namespace FreedomTransportation.Migrations
                         CustomerWalletId = c.Int(),
                         SchedulingRideId = c.Int(),
                         ApplicationUserId = c.String(maxLength: 128),
+                        IsConfirmed = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
@@ -133,8 +134,6 @@ namespace FreedomTransportation.Migrations
                         FirstName = c.String(),
                         LastName = c.String(),
                         DriversLicense = c.String(),
-                        Password = c.String(),
-                        Email = c.String(),
                         Phone = c.String(),
                         Street = c.String(),
                         State = c.String(),
@@ -166,6 +165,25 @@ namespace FreedomTransportation.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.FutureSchedules",
+                c => new
+                    {
+                        PickUpId = c.Int(nullable: false, identity: true),
+                        CustomerId = c.Int(),
+                        Date = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        Time = c.String(nullable: false),
+                        PickupAddress = c.String(),
+                        DropoffAddress = c.String(),
+                        Email = c.String(),
+                        ApplicationUserId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.PickUpId)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
+                .ForeignKey("dbo.Customers", t => t.CustomerId)
+                .Index(t => t.CustomerId)
+                .Index(t => t.ApplicationUserId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -189,12 +207,12 @@ namespace FreedomTransportation.Migrations
                         City = c.String(),
                         lat = c.String(),
                         lng = c.String(),
-                        DriverId = c.Int(nullable: false),
+                        DriverId = c.Int(),
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Drivers", t => t.DriverId, cascadeDelete: true)
+                .ForeignKey("dbo.Drivers", t => t.DriverId)
                 .Index(t => t.DriverId)
                 .Index(t => t.ApplicationUserId);
             
@@ -205,6 +223,8 @@ namespace FreedomTransportation.Migrations
             DropForeignKey("dbo.TransportationProviders", "DriverId", "dbo.Drivers");
             DropForeignKey("dbo.TransportationProviders", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.FutureSchedules", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.FutureSchedules", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Drivers", "TripsId", "dbo.Trips");
             DropForeignKey("dbo.Drivers", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Drivers", "ApplicationUserId", "dbo.AspNetUsers");
@@ -218,6 +238,8 @@ namespace FreedomTransportation.Migrations
             DropIndex("dbo.TransportationProviders", new[] { "ApplicationUserId" });
             DropIndex("dbo.TransportationProviders", new[] { "DriverId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.FutureSchedules", new[] { "ApplicationUserId" });
+            DropIndex("dbo.FutureSchedules", new[] { "CustomerId" });
             DropIndex("dbo.Drivers", new[] { "ApplicationUserId" });
             DropIndex("dbo.Drivers", new[] { "TripsId" });
             DropIndex("dbo.Drivers", new[] { "CustomerId" });
@@ -232,6 +254,7 @@ namespace FreedomTransportation.Migrations
             DropIndex("dbo.Customers", new[] { "CustomerWalletId" });
             DropTable("dbo.TransportationProviders");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.FutureSchedules");
             DropTable("dbo.Trips");
             DropTable("dbo.Drivers");
             DropTable("dbo.SchedulingRides");

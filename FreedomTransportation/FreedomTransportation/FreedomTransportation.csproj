@@ -212,33 +212,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811250541358_test.cs" />
-    <Compile Include="Migrations\201811250541358_test.Designer.cs">
-      <DependentUpon>201811250541358_test.cs</DependentUpon>
+    <Compile Include="Migrations\201811271746457_changes were made in identity model.cs" />
+    <Compile Include="Migrations\201811271746457_changes were made in identity model.Designer.cs">
+      <DependentUpon>201811271746457_changes were made in identity model.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811251836553_added one property.cs" />
-    <Compile Include="Migrations\201811251836553_added one property.Designer.cs">
-      <DependentUpon>201811251836553_added one property.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811261543390_fk is nullable .cs" />
-    <Compile Include="Migrations\201811261543390_fk is nullable .Designer.cs">
-      <DependentUpon>201811261543390_fk is nullable .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811261607594_removed email and password from driver model.cs" />
-    <Compile Include="Migrations\201811261607594_removed email and password from driver model.Designer.cs">
-      <DependentUpon>201811261607594_removed email and password from driver model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811261941183_added a new model for future booking.cs" />
-    <Compile Include="Migrations\201811261941183_added a new model for future booking.Designer.cs">
-      <DependentUpon>201811261941183_added a new model for future booking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811261953213_added a new properties in futurescheduling model.cs" />
-    <Compile Include="Migrations\201811261953213_added a new properties in futurescheduling model.Designer.cs">
-      <DependentUpon>201811261953213_added a new properties in futurescheduling model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811262010208_added a email properties in futurescheduling model.cs" />
-    <Compile Include="Migrations\201811262010208_added a email properties in futurescheduling model.Designer.cs">
-      <DependentUpon>201811262010208_added a email properties in futurescheduling model.cs</DependentUpon>
+    <Compile Include="Migrations\201811272052515_changes .cs" />
+    <Compile Include="Migrations\201811272052515_changes .Designer.cs">
+      <DependentUpon>201811272052515_changes .cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -327,9 +307,7 @@
     <Content Include="Views\Drivers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Drivers\Delete.cshtml" />
-    <Content Include="Views\Drivers\DriverTodayPickups.cshtml" />
     <Content Include="Views\SchedulingRides\SchedulingRide.cshtml" />
-    <Content Include="Views\SchedulingRides\TripInfo.cshtml" />
     <Content Include="Views\SchedulingRides\MakeAPayment.cshtml" />
     <Content Include="Views\Drivers\ConfirmPickup.cshtml" />
     <Content Include="Views\Home\Demo1.cshtml" />
@@ -342,6 +320,10 @@
     <Content Include="Views\FutureSchedule\Details.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Feedback\Sent.cshtml" />
+    <Content Include="Views\SchedulingRides\TripInfo.cshtml" />
+    <Content Include="Views\SchedulingRides\Index.cshtml" />
+    <Content Include="Views\FutureSchedule\pay.cshtml" />
+    <Content Include="Views\FutureSchedule\Route.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,26 +342,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811250541358_test.resx">
-      <DependentUpon>201811250541358_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811271746457_changes were made in identity model.resx">
+      <DependentUpon>201811271746457_changes were made in identity model.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811251836553_added one property.resx">
-      <DependentUpon>201811251836553_added one property.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811261543390_fk is nullable .resx">
-      <DependentUpon>201811261543390_fk is nullable .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811261607594_removed email and password from driver model.resx">
-      <DependentUpon>201811261607594_removed email and password from driver model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811261941183_added a new model for future booking.resx">
-      <DependentUpon>201811261941183_added a new model for future booking.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811261953213_added a new properties in futurescheduling model.resx">
-      <DependentUpon>201811261953213_added a new properties in futurescheduling model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811262010208_added a email properties in futurescheduling model.resx">
-      <DependentUpon>201811262010208_added a email properties in futurescheduling model.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811272052515_changes .resx">
+      <DependentUpon>201811272052515_changes .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

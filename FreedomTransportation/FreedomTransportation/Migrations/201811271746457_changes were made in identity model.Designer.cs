@@ -7,13 +7,13 @@ namespace FreedomTransportation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedanewpropertiesinfutureschedulingmodel : IMigrationMetadata
+    public sealed partial class changesweremadeinidentitymodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedanewpropertiesinfutureschedulingmodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changesweremadeinidentitymodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811261953213_added a new properties in futurescheduling model"; }
+            get { return "201811271746457_changes were made in identity model"; }
         }
         
         string IMigrationMetadata.Source

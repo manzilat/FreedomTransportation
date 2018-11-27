@@ -4,3 +4,92 @@
     ViewBag.Title = "TripInfo";
 }
 
+<h2>TripInfo</h2>
+
+<div>
+    <h4>SchedulingRide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropoffZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropoffZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <center>
+        <div>
+            <input type="button" class="btn btn-success" value="Pay" onclick="location.href='@Url.Action("MakeAPayment", "SchedulingRides")'" />
+        </div>
+    </center>
+    @*@Html.ActionLink("Edit My Info", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })&nbsp;*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

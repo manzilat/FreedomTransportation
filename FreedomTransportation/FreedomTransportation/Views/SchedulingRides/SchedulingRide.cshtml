@@ -80,8 +80,9 @@
 
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Confirm" class="btn btn-success" />
+            <div>
+                @*<input type="button" class="btn btn-success" value="Confirm" onclick="location.href='@Url.Action()'" />*@
+                <input type="submit" value="Confirm" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -89,7 +90,7 @@
 
 <br /><br />
 <div>
-    <input type="button" class="btn btn-success" value="Home" onclick="location.href='@Url.Action("Home", "Customers")'" />
+    <input type="button" class="btn btn-success" value="home" onclick="location.href='@Url.Action("TripInfo", "SchedulingRides")'" />
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

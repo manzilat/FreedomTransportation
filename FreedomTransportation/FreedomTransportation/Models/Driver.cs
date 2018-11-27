@@ -26,9 +26,9 @@ namespace FreedomTransportation.Models
        
 
        
-        [ForeignKey("Customer")]
-        public int? CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        //[ForeignKey("Customer")]
+        //public int? CustomerId { get; set; }
+        //public Customer Customer { get; set; }
         [ForeignKey("Trips")]
         public int? TripsId { get; set; }
         public Trips Trips { get; set; }

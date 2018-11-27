@@ -16,9 +16,10 @@ namespace FreedomTransportation.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Contact(EmailFormModel model)
+        public async Task<ActionResult> Index(EmailFormModel model)
         {
             if (ModelState.IsValid)
             {
@@ -29,7 +30,7 @@ namespace FreedomTransportation.Controllers
                 body += "<p>{2}</p>";
                 var message = new MailMessage();
                 message.To.Add(new MailAddress("quraishiiff@gmail.com")); //destination e-mail address
-                message.Subject = "Your email subject";
+                message.Subject = "Feedback";
                 message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
                 message.IsBodyHtml = true;
                 using (var smtp = new SmtpClient())
@@ -47,6 +48,8 @@ namespace FreedomTransportation.Controllers
             }
             return View(model);
         }
+
+      
 
         public ActionResult Sent()
         {

@@ -31,7 +31,11 @@ namespace FreedomTransportation.Models
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
+        // add foreign key for driver (driver id)
+        // make sure DriverId is set when a ride is created!
 
+        // step 3 =>
+        // make index view for rides. in controller's Index action, query for rides based on driverId
 
     }
 }
