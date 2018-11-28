@@ -207,6 +207,7 @@
     <Compile Include="Controllers\GoogleMapsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ResponseCacheAttribute.cs" />
     <Compile Include="Controllers\SchedulingRidesController.cs" />
     <Compile Include="Controllers\TransportationProvidersController.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Models\FutureSchedule.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\SchedulingRide.cs" />
     <Compile Include="Models\TransportationProvider.cs" />
@@ -328,6 +330,9 @@
     <Content Include="Views\TransportationProviders\Filter.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Drivers\AssignRides.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\SendMessage.cshtml" />
+    <Content Include="Views\Message\GetMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
