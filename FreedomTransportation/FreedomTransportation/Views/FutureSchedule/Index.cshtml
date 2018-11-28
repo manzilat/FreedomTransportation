@@ -36,6 +36,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
 
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
@@ -49,10 +52,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DropoffAddress)
             </td>
-
-
-
-
         </tr>
     }
 

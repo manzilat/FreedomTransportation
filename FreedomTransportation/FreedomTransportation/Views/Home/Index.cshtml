@@ -12,8 +12,46 @@
 <body>
     <h1>Freedom Transportation</h1>
     <p>At freedom transportation we offer the best rates possible in Milwaukee.</p>
-    @if (!User.Identity.IsAuthenticated && User.IsInRole("Customer")) //Customer is not logged in
+
+    @if (User.Identity.IsAuthenticated)
     {
+        if (User.IsInRole("Customer"))
+        {
+            <h1>You are now logged in.</h1>
+            <h2>Choose from several options below:</h2>
+            <ul>
+                <li><a href="/FutureSchedule/Create">Schedule You're Ride For Later</a></li>
+                <li><a href="/Home/Demo1">Calculate Cost of Ride</a></li>
+                <li><a href="/Feedback/Index">Give Us Feedback</a></li>
+            </ul>
+        }
+
+        if (User.IsInRole("Driver"))
+        {
+            <h1>Hello.</h1>
+            <h2>Choose from several options below:</h2>
+            <ul>
+                <li><a href="/SchedulingRides/TripInfo">Check You're Schedule</a></li>
+                <li><a href="/FutureSchedule/Index">View Rides</a></li>
+                <li><a href="/Trips/Create">Confirmation</a></li>
+                <li><a href="/Drivers/MapsForDrivers">Drictions</a></li>
+            </ul>
+        }
+
+        if (User.IsInRole("TransportationProvider"))
+        {
+            <h1>Hello.</h1>
+            <h2>Choose from several options below:</h2>
+            <ul>
+                <li><a href="/FutureSchedule/Create">Schedule You're Ride For Later</a></li>
+                <li><a href="/Home/Demo1">Calculate Cost of Ride</a></li>
+                <li><a href="/Feedback/Index">Give Us Feedback</a></li>
+            </ul>
+        }
+    }
+    else
+    {
+        //No user is logged in
         <h2>Please login.</h2>
         <h3>How To - Instructions</h3>
         <ol>
@@ -24,19 +62,6 @@
             <li>Customer must make a payment for ride to be scheduled</li>
         </ol>
         <p><strong>Note:</strong> All employees must login to view all customer requests.</p>
-    }
-    else //Customer is logged in
-    {
-        //You have two options to go to differnet pages after login
-        <h1>You are now logged in.</h1>
-        <h2>Choose from several options below:</h2>
-        <ul>
-            <li><a href="/FutureSchedule/Create">Schedule You're Ride For Later</a></li>
-            <li><a href="/Home/Demo1">Calculate Cost of Ride</a></li>
-            <li><a href="/Feedback/Index">Give Us Feedback</a></li>
-        </ul>
-        //RedirectToAction("Action","Controller");
-        //Response.Redirect("/Path/");
     }
 </body>
 </html>

@@ -141,6 +141,10 @@ namespace FreedomTransportation.Controllers
         {
             return View(db.Customers.ToList());
         }
+        public ActionResult MapsForDriver()
+        {
+            return View();
+        }
 
     }
 }

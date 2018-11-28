@@ -6,6 +6,8 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
+using System.IO;
 
 namespace FreedomTransportation.Controllers
 {
@@ -29,7 +31,7 @@ namespace FreedomTransportation.Controllers
                 body += "<hr>";
                 body += "<p>{2}</p>";
                 var message = new MailMessage();
-                message.To.Add(new MailAddress("quraishiiff@gmail.com")); //destination e-mail address
+                message.To.Add(new MailAddress("quraishiiff@gmail.com")); //Send to this e-mail address
                 message.Subject = "Feedback";
                 message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
                 message.IsBodyHtml = true;
@@ -38,18 +40,17 @@ namespace FreedomTransportation.Controllers
                     try
                     {
                         await smtp.SendMailAsync(message);
+                        return RedirectToAction("Sent");//Goto sent successful page.
                     }
                     catch (Exception e)
                     {
                         Response.Write("<p>" + e.Message + "</p>");
                     }
-                    return RedirectToAction("Sent");
+                    return View();//Send back to form if unsuccessful
                 }
             }
             return View(model);
         }
-
-      
 
         public ActionResult Sent()
         {

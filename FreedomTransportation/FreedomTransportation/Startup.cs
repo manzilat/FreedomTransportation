@@ -21,19 +21,19 @@ namespace FreedomTransportation
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             if (!roleManager.RoleExists("Customer"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Customer";
                 roleManager.Create(role);
             }
             if (!roleManager.RoleExists("Driver"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Driver";
                 roleManager.Create(role);
             }
             if (!roleManager.RoleExists("TransportationProvider"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "TransportationProvider";
                 roleManager.Create(role);
             }

@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ResponseCacheAttribute.cs" />
     <Compile Include="Controllers\SchedulingRidesController.cs" />
     <Compile Include="Controllers\TransportationProvidersController.cs" />
+    <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +220,10 @@
     <Compile Include="Migrations\201811272052515_changes .cs" />
     <Compile Include="Migrations\201811272052515_changes .Designer.cs">
       <DependentUpon>201811272052515_changes .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811280015227_added trips properties .cs" />
+    <Compile Include="Migrations\201811280015227_added trips properties .Designer.cs">
+      <DependentUpon>201811280015227_added trips properties .cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -324,6 +329,9 @@
     <Content Include="Views\SchedulingRides\Index.cshtml" />
     <Content Include="Views\FutureSchedule\pay.cshtml" />
     <Content Include="Views\FutureSchedule\Route.cshtml" />
+    <Content Include="Views\Trips\Create.cshtml" />
+    <Content Include="Views\Trips\Index.cshtml" />
+    <Content Include="Views\Drivers\MapsForDriver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811272052515_changes .resx">
       <DependentUpon>201811272052515_changes .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280015227_added trips properties .resx">
+      <DependentUpon>201811280015227_added trips properties .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,13 +20,14 @@
                 @Html.ActionLink("Freedom Transportation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">email
+                <ul class="nav navbar-nav">
+                    email
                     @if (User.IsInRole("Customer"))
                     {
-                       
-                      
-                        
-                       
+
+
+
+
 
                     }
                     @if (User.IsInRole("Driver"))
@@ -34,7 +35,8 @@
 
                         <li>@Html.ActionLink("Check you're Schedule", "TripInfo", "SchedulingRides")</li>
                         <li>@Html.ActionLink("View rides", "Index", "FutureSchedule")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Confirmation", "Create", "Trips")</li>
+                        <li>@Html.ActionLink("Directions", "MapsForDriver", "Drivers")</li>
 
                     }
 

@@ -17,6 +17,10 @@ namespace FreedomTransportation.Models
         public DateTime DepartureTime { get; set; }
         [Display(Name = "DropOff Time")]
         public DateTime DropOffTime { get; set; }
+        [Display(Name = "Name Of Customer")]
+        public string NameOfTheCustomer { get; set; }
+        [Display(Name = "Name Of The Driver")]
+        public string DriverName { get; set; }
 
     }
 }

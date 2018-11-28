@@ -1,28 +1,31 @@
 ﻿
 @{
-    ViewBag.Title = "Demo1";
+    ViewBag.Title = "MapsForDriver";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>Calculate Your Route</h2>
-        <div>
-            <div>
-                Travel From : <input id="travelfrom" type="text" list="dataddresslist" name="name" value="" />
-                To : <input id="travelto" type="text" list="dataddresslist" name="name" value="" />
-                     <datalist id="dataddresslist">
-                         <option value="4036 S 76th Street, Milwaukee, WI, USA">2092 S 102nd Street Allis, Milwaukee, WI, USA</option>
-                         <option value="2323 n Mayfair Rd, Milwaukee, WI, USA">5000 W Chambers, Milwaukee, WI, USA</option>
-                         <option value="8901 N Brown Deer Rd, Milwaukee, WI, USA">2241 S Kinnicknnic Ave, Milwaukee, WI, USA</option>
-                         <option value="313 N Plakinton Ave, Milwaukee, WI, USA">5901 N Ironwood Rd, Glendale, WI, USA</option>
-                     </datalist>
-                <input type="button" value="Get Route" onclick="GetRoute()" />
-            </div>
-        </div>
-        <div id="dvDistance">Enter a route to get distance information</div>
+<h2>Direction For Drivers</h2>
 
-        <div id="dvMap" style="min-height:500px"></div>
+<div class="row">
+<div class="col-md-12">
+    <h2>Calculate Your Route</h2>
+    <div>
+        <div>
+            Travel From : <input id="travelfrom" type="text" list="dataddresslist" name="name" value="" />
+            To : <input id="travelto" type="text" list="dataddresslist" name="name" value="" />
+            <datalist id="dataddresslist">
+                <option value="4036 S 76th Street, Milwaukee, WI, USA">2092 S 102nd Street Allis, Milwaukee, WI, USA</option>
+                <option value="2323 n Mayfair Rd, Milwaukee, WI, USA">5000 W Chambers, Milwaukee, WI, USA</option>
+                <option value="8901 N Brown Deer Rd, Milwaukee, WI, USA">2241 S Kinnicknnic Ave, Milwaukee, WI, USA</option>
+                <option value="313 N Plakinton Ave, Milwaukee, WI, USA">5901 N Ironwood Rd, Glendale, WI, USA</option>
+            </datalist>
+            <input type="button" value="Get Route" onclick="GetRoute()" />
+        </div>
     </div>
+    <br /><br />
+    <div id="dvDistance">Enter a route to get direction</div>
+
+    <div id="dvMap" style="min-height:500px"></div>
+</div>
 </div>
 
 @section scripts{
@@ -82,33 +85,13 @@
                     var duration = response.rows[0].elements[0].duration.value;
                     var dvDistance = document.getElementById("dvDistance");
 
-                    /////////////////FREEDOMTRANSPORTATION ENGINE////////////////////
-                    var mileageTravelled;//Google give distance
-                    var ratePerRide;//FreedomTransportation CEO set rate
-
-                    mileageTravelled = parseFloat(distance);//Convert text value to decimal
-                    ratePerRide = 1.00;//Competitive rates :)
-                    var totalCostOfTrip = parseFloat(mileageTravelled * ratePerRide);//FreedomTransportation Marketing
-
-                    //Removing the 100.01 '.' in decimal -> cents conversion -> 10001 cents -> stripe api
-                    totalCostOfTripInCents = totalCostOfTrip.toString().replace(".", "");
-                    //////////////////////////////////////////////////////////////////
-
-                    duration = parseFloat(duration / 60).toFixed(2);
-                    dvDistance.innerHTML = "";
-                    dvDistance.innerHTML += "Distance: " + distance + " / ";
-                    dvDistance.innerHTML += "Time: " + duration + " min / ";
-                    dvDistance.innerHTML += "Cost: $" + totalCostOfTrip + "USD";
+                    
                 } else {
                     alert("Unable to find the distance via road.");
                 }
             });
         }
 
-    </script><center>
-                 <div>
-                     <input type="button" class="btn btn-success" value="Schedule" onclick="location.href='@Url.Action("SchedulingRide", "SchedulingRides")'" />
-                 </div>
-</center>
-   
+    </script>
+
 }
