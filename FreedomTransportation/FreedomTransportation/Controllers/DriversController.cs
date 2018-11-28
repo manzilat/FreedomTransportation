@@ -89,11 +89,30 @@ namespace FreedomTransportation.Controllers
         // POST: Drivers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DriversLicense,Email,Phone,Street,City,State,Zip,Status,TripId")] Driver driver)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DriversLicense,Email,Phone,Street,City,State,Zip,Status,TripId")] Driver driver,int id)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(driver).State = EntityState.Modified;
+                Driver updatedDriver = db.Drivers.Find(id);
+                if (updatedDriver == null)
+                {
+                    return RedirectToAction("DisplayError", "Employees");
+                }
+                updatedDriver.FirstName = driver.FirstName;
+                updatedDriver.LastName = driver.LastName;
+                updatedDriver.DriversLicense = driver.DriversLicense;
+          
+
+                updatedDriver.Phone = driver.Phone;
+                updatedDriver.Street = driver.Street;
+
+                updatedDriver.City = driver.City;
+                updatedDriver.State = driver.State;
+                updatedDriver.Zip = driver.Zip;
+                updatedDriver.Status = driver.Status;
+
+
+                db.Entry(updatedDriver).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details");
             }
@@ -112,7 +131,7 @@ namespace FreedomTransportation.Controllers
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Driver driver = db.Drivers.Find(id);
             db.Drivers.Remove(driver);

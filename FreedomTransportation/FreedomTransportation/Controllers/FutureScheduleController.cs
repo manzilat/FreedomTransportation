@@ -13,7 +13,7 @@ namespace FreedomTransportation.Models
         // GET: FutureSchedule
         public ActionResult Index()
         {
-            return View();
+            return View(db.FutureSchedule.ToList());
         }
         // GET: Customers/Create
         public ActionResult Create()

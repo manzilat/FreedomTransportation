@@ -1,19 +1,21 @@
-﻿
+﻿@model IEnumerable<FreedomTransportation.Models.Customer>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index2";
 }
 
 
-@{ List<string> addresses = new List<string>(); }
-@foreach (var item in Model.Customer)
+@{List<string> addresses = new List<string>(); }
+@foreach (var item in Model)
 {
-    if (item.ZipCode == ViewBag.zip)
+    
+    if (item.Zip == ViewBag.zip)
     {
-        string address = item.StreetAddress + ", " + item.ZipCode.ToString();
+        string address = item.Street + ", " + item.Zip.ToString();
         addresses.Add(address);
     }
 }
-}
+
 
 
 <section class="scripts">
@@ -97,7 +99,7 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCSo3QsQQnuXdnT7FXpy6kLulZ3crDKXw4" type="text/javascript"></script>
 
-    </script>
+    
     <div id="map" style="width : 1280px; height : 720px; display: block; margin-left: auto; margin-right: auto;">
     </div>
 </section>

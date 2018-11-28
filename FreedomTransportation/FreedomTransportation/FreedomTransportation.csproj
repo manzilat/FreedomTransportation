@@ -326,7 +326,8 @@
     <Content Include="Views\Drivers\MapsForDriver.cshtml" />
     <Content Include="Views\SchedulingRides\Index.cshtml" />
     <Content Include="Views\TransportationProviders\Filter.cshtml" />
-    <Content Include="Views\GoogleMaps\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Drivers\AssignRides.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
