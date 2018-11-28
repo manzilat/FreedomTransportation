@@ -7,13 +7,13 @@ namespace FreedomTransportation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addedtripsproperties : IMigrationMetadata
+    public sealed partial class redo : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedtripsproperties));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(redo));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811280015227_added trips properties "; }
+            get { return "201811281056473_redo"; }
         }
         
         string IMigrationMetadata.Source

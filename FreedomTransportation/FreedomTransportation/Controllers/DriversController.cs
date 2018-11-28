@@ -29,7 +29,7 @@ namespace FreedomTransportation.Controllers
         // POST: Drivers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Driver'sLicense,Email,Phone,Street,State,Zip,Status,TripId")] Driver driver)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,DriversLicense,City,Email,Phone,Street,State,Zip,Status,TripId")] Driver driver)
         {
             if (ModelState.IsValid)
             {
@@ -54,15 +54,15 @@ namespace FreedomTransportation.Controllers
             return View(driver);
         }
         // GET: Drivers/Details/5
-        public ActionResult Details(Driver driver)
-        {
-            Driver drivernow = db.Drivers.Find(driver.Id);
+        public ActionResult Details(int? id)
+        { 
+            Driver drivernow = db.Drivers.Find(id);
          
-            return View(driver);
+            return View(drivernow);
         }
 
-        [HttpPost]
-        //public ActionResult Details(int id)
+        //[HttpPost]
+        //public ActionResult Details(int? id)
         //{
 
         //    var userId = User.Identity.GetUserId();
@@ -72,7 +72,7 @@ namespace FreedomTransportation.Controllers
         //    var detail = db.Drivers.Where(x => x.Id == id).FirstOrDefault();
         //    //var rides = db.SchedulingRides.Where(r => r.Id.ToString() == userId);
         //    db.SaveChanges();
-        
+
         //    return View(detail);
         //}
 

@@ -214,17 +214,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811271746457_changes were made in identity model.cs" />
-    <Compile Include="Migrations\201811271746457_changes were made in identity model.Designer.cs">
-      <DependentUpon>201811271746457_changes were made in identity model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811272052515_changes .cs" />
-    <Compile Include="Migrations\201811272052515_changes .Designer.cs">
-      <DependentUpon>201811272052515_changes .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811280015227_added trips properties .cs" />
-    <Compile Include="Migrations\201811280015227_added trips properties .Designer.cs">
-      <DependentUpon>201811280015227_added trips properties .cs</DependentUpon>
+    <Compile Include="Migrations\201811281056473_redo.cs" />
+    <Compile Include="Migrations\201811281056473_redo.Designer.cs">
+      <DependentUpon>201811281056473_redo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -353,14 +345,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811271746457_changes were made in identity model.resx">
-      <DependentUpon>201811271746457_changes were made in identity model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811272052515_changes .resx">
-      <DependentUpon>201811272052515_changes .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811280015227_added trips properties .resx">
-      <DependentUpon>201811280015227_added trips properties .cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811281056473_redo.resx">
+      <DependentUpon>201811281056473_redo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

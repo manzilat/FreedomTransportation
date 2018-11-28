@@ -3,51 +3,101 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-        #map {
-            height: 520px;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <div id="map"></div>
+@{ List<string> addresses = new List<string>(); }
+@foreach (var item in Model.Customer)
+{
+    if (item.ZipCode == ViewBag.zip)
+    {
+        string address = item.StreetAddress + ", " + item.ZipCode.ToString();
+        addresses.Add(address);
+    }
+}
+}
+
+
+<section class="scripts">
     <script>
-        var geocoder;
-        var map;
-
         function initMap() {
-            geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(-34.397, 150.644);//Milwauke
-            var mapOptions = {
-                zoom: 8,
-                center: latlng
-            }
-            map = new google.maps.Map(document.getElementById('map'), mapOptions);
-              var zip = "@ViewBag.Zipcode.ToString()";
-            var address = (streetName + " " + zip + " ");
+            var bounds = new google.maps.LatLngBounds;
+            var markersArray = [];
+            var origin1 = "@(ViewBag.zip)";
+            var homeIcon = "http://maps.google.com/mapfiles/ms/icons/homegardenbusiness.png";
+            var destIcon = "http://maps.google.com/mapfiles/ms/icons/flag.png";
 
-            geocoder.geocode({ 'address': address /*+ " " + zip */ }, function (results, status) {
-                if (status == 'OK') {
-                    map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        animation: google.maps.Animation.BOUNCE, //Make this baby bounce
-                        position: results[0].geometry.location
-                    });
+            var destinationArray = [];
+
+            @foreach (var a in addresses)
+        {
+            <text> destinationArray.push("@a"); </text>
+        }
+
+            var destinationIcon = destIcon;
+            var originIcon = homeIcon;
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { origin1 },
+                zoom: 10
+            });
+            var geocoder = new google.maps.Geocoder;
+
+            var service = new google.maps.DistanceMatrixService;
+            service.getDistanceMatrix({
+                origins: [origin1],
+                destinations: destinationArray,
+                travelMode: 'DRIVING',
+                unitSystem: google.maps.UnitSystem.IMPERIAL,
+                avoidHighways: false,
+                avoidTolls: false
+            }, function (response, status) {
+                if (status !== 'OK') {
+                    alert('Error was: ' + status);
                 } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
+                    var originList = response.originAddresses;
+                    var destinationList = response.destinationAddresses;
+                    deleteMarkers(markersArray);
+
+                    var showGeocodedAddressOnMap = function (asDestination) {
+                        var icon = asDestination ? destinationIcon : originIcon;
+                        return function (results, status) {
+                            if (status === 'OK') {
+                                map.fitBounds(bounds.extend(results[0].geometry.location));
+                                markersArray.push(new google.maps.Marker({
+                                    map: map,
+                                    position: results[0].geometry.location,
+                                    icon: icon
+                                }));
+                            } else {
+                                alert('Geocode was not successful due to: ' + status);
+                            }
+                        };
+                    };
+
+                    for (var i = 0; i < originList.length; i++) {
+                        debugger;
+                        var results = response.rows[i].elements;
+                        geocoder.geocode({ 'address': originList[i] },
+                            showGeocodedAddressOnMap(false));
+                        for (var j = 0; j < results.length; j++) {
+                            geocoder.geocode({ 'address': destinationList[j] },
+                                showGeocodedAddressOnMap(true));
+                        }
+                    }
+
                 }
             });
+        }
+
+        function deleteMarkers(markersArray) {
+            for (var i = 0; i < markersArray.length; i++) {
+                markersArray[i].setMap(null);
+            }
+            markersArray = [];
+        }
     </script>
+
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCSo3QsQQnuXdnT7FXpy6kLulZ3crDKXw4" type="text/javascript"></script>
-</body>
-</html>
+
+    </script>
+    <div id="map" style="width : 1280px; height : 720px; display: block; margin-left: auto; margin-right: auto;">
+    </div>
+</section>

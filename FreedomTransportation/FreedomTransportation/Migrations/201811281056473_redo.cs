@@ -3,7 +3,7 @@ namespace FreedomTransportation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class changesweremadeinidentitymodel : DbMigration
+    public partial class redo : DbMigration
     {
         public override void Up()
         {
@@ -140,15 +140,12 @@ namespace FreedomTransportation.Migrations
                         Zip = c.String(),
                         City = c.String(),
                         Status = c.String(),
-                        CustomerId = c.Int(),
                         TripsId = c.Int(),
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Customers", t => t.CustomerId)
                 .ForeignKey("dbo.Trips", t => t.TripsId)
-                .Index(t => t.CustomerId)
                 .Index(t => t.TripsId)
                 .Index(t => t.ApplicationUserId);
             
@@ -161,6 +158,8 @@ namespace FreedomTransportation.Migrations
                         ArrivalTime = c.DateTime(nullable: false),
                         DepartureTime = c.DateTime(nullable: false),
                         DropOffTime = c.DateTime(nullable: false),
+                        NameOfTheCustomer = c.String(),
+                        DriverName = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -226,7 +225,6 @@ namespace FreedomTransportation.Migrations
             DropForeignKey("dbo.FutureSchedules", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.FutureSchedules", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Drivers", "TripsId", "dbo.Trips");
-            DropForeignKey("dbo.Drivers", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Drivers", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Customers", "SchedulingRideId", "dbo.SchedulingRides");
             DropForeignKey("dbo.SchedulingRides", "ApplicationUserId", "dbo.AspNetUsers");
@@ -242,7 +240,6 @@ namespace FreedomTransportation.Migrations
             DropIndex("dbo.FutureSchedules", new[] { "CustomerId" });
             DropIndex("dbo.Drivers", new[] { "ApplicationUserId" });
             DropIndex("dbo.Drivers", new[] { "TripsId" });
-            DropIndex("dbo.Drivers", new[] { "CustomerId" });
             DropIndex("dbo.SchedulingRides", new[] { "ApplicationUserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
