@@ -204,6 +204,7 @@
     <Compile Include="Controllers\ErrorViewModel.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FutureScheduleController.cs" />
+    <Compile Include="Controllers\GoogleMapsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResponseCacheAttribute.cs" />
@@ -326,12 +327,14 @@
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Feedback\Sent.cshtml" />
     <Content Include="Views\SchedulingRides\TripInfo.cshtml" />
-    <Content Include="Views\SchedulingRides\Index.cshtml" />
     <Content Include="Views\FutureSchedule\pay.cshtml" />
     <Content Include="Views\FutureSchedule\Route.cshtml" />
     <Content Include="Views\Trips\Create.cshtml" />
     <Content Include="Views\Trips\Index.cshtml" />
     <Content Include="Views\Drivers\MapsForDriver.cshtml" />
+    <Content Include="Views\SchedulingRides\Index.cshtml" />
+    <Content Include="Views\TransportationProviders\Filter.cshtml" />
+    <Content Include="Views\GoogleMaps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

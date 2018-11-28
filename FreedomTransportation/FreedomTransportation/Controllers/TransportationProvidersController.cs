@@ -48,18 +48,19 @@ namespace FreedomTransportation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ProviderName,Email,Phone,Street,State,Zip,City,DriverId")] TransportationProvider transportationProvider  )
         {
-            if (ModelState.IsValid)
             {
-                var userId = User.Identity.GetUserId();
-                var currentProvider = (from p in db.Users where p.Id == userId select p);
-                db.Entry(currentProvider).State = EntityState.Modified;
-                
-                db.SaveChanges();
-                return RedirectToAction("Details");
+                if (ModelState.IsValid)
+                {
+                    var userId = User.Identity.GetUserId();
+                    //  var selectUser = db.FutureSchedule.Where(f => f.ApplicationUserId == userId).SingleOrDefault();
+                    //futureSchedule.CustomerId = selectUser.CustomerId;
+                    db.TransportationProviders.Add(transportationProvider);
+                    db.SaveChanges();
+                    return View("Details", transportationProvider);
+                    // RedirectToAction("Details");
+                }
+                return View(transportationProvider);
             }
-            return View(transportationProvider);
-
-                
         }
 
         // GET: TransportationProviders/Edit/5
@@ -83,7 +84,24 @@ namespace FreedomTransportation.Controllers
                 return View();
             }
         }
-
+        public ActionResult Filter(string sortOrder)
+        {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var firstname = from f in db.Customers.ToList()
+                           select f;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    firstname = firstname.OrderByDescending(f => f.FirstName);
+                    break;
+                case "Date":
+                    firstname = firstname.OrderBy(f => f.LastName);
+                    break;
+               
+            }
+            return View(firstname.ToList());
+        }
         // GET: TransportationProviders/Delete/5
         public ActionResult Delete(int id)
         {

@@ -19,7 +19,7 @@ namespace FreedomTransportation.Controllers
         // GET: SchedulingRides
         public ActionResult Index()
         {
-            return View();
+            return View(db.SchedulingRides.ToList());
         }
 
         public ActionResult MakeAPayment()
