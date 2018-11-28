@@ -31,8 +31,8 @@ namespace FreedomTransportation.Models
                 //futureSchedule.CustomerId = selectUser.CustomerId;
                 db.FutureSchedule.Add(futureSchedule);
                 db.SaveChanges();
-                //return View("Details", futureSchedule);
-                RedirectToAction("Details");
+                return View("Details", futureSchedule);
+               // RedirectToAction("Details");
             }
             return View(futureSchedule);
         }

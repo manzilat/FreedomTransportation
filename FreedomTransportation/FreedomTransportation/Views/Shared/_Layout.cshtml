@@ -32,10 +32,7 @@
                     }
                     @if (User.IsInRole("Driver"))
                     {
-
-                        <li>@Html.ActionLink("Check you're Schedule", "TripInfo", "SchedulingRides")</li>
-                        <li>@Html.ActionLink("View rides", "Index", "FutureSchedule")</li>
-                        <li>@Html.ActionLink("Confirmation", "Create", "Trips")</li>
+                    
                         <li>@Html.ActionLink("Directions", "MapsForDriver", "Drivers")</li>
 
                     }
